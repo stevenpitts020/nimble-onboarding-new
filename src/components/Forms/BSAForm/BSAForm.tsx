@@ -3,7 +3,7 @@ import React, { Ref } from "react";
 import _ from "lodash";
 import { useHistory } from "react-router-dom";
 import { ArrowLeft, AlertCircle } from "react-feather";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { log } from "../../../services";
@@ -13,7 +13,6 @@ import "./BSAForm.sass";
 import { IBSAForm } from "./types";
 import Input from "../Input/Input";
 import Button from "../../Common/Button/Button";
-import ReactFlagsSelect from "react-flags-select";
 
 const BSAForm: React.FC<IBSAForm> = (props) => {
   const { defaultValues, questions } = props;
@@ -68,8 +67,6 @@ const BSAForm: React.FC<IBSAForm> = (props) => {
 
   const {
     watch,
-    control,
-    setValue,
     register,
     handleSubmit,
     formState: { errors },
@@ -127,15 +124,16 @@ const BSAForm: React.FC<IBSAForm> = (props) => {
     onSubmit(data);
   };
 
+  /*
+  const onSelectFlag = (code: string) => {
+    log.info(code, "onSelectFlag");
+    setValue("countryOfOrigin", code, { shouldValidate: true });
+  };
+  */
+
   const goBack = () => {
     history.goBack();
   };
-
-  const onSelectCountry = (qid) => (code: string) => {
-    console.log({ qid, code });
-    setValue(qid, code, { shouldValidate: true });
-  };
-
   return (
     <div className="ni-test prospect-form-card" data-testid="BSAForm">
       <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -144,7 +142,6 @@ const BSAForm: React.FC<IBSAForm> = (props) => {
             if (q.dependsOn && !_.every(depends[q.id], (dep) => dep())) {
               return <div key={q.id} />;
             }
-
             return (
               <div key={q.id} className="question-row">
                 <p className="question">{q.text}</p>
@@ -158,6 +155,7 @@ const BSAForm: React.FC<IBSAForm> = (props) => {
                       defaultValue={val}
                       label={val}
                       ref={register as Ref<HTMLInputElement>}
+                      scrollToRadio
                     />
                   ))}
                 {q.subtype === "text" && (
@@ -167,24 +165,6 @@ const BSAForm: React.FC<IBSAForm> = (props) => {
                     name={q.id}
                     ref={register as Ref<HTMLInputElement>}
                     errors={(errors as any)[q.id]}
-                  />
-                )}
-                {q.subtype === "country" && (
-                  <Controller
-                    key={`country-${q.id}`}
-                    control={control}
-                    name={q.id}
-                    as={
-                      <ReactFlagsSelect
-                        searchable
-                        showSelectedLabel
-                        selected={watch(q.id)}
-                        key={`select-${q.id}`}
-                        onSelect={onSelectCountry(q.id)}
-                        customLabels={{ LA: "Loas", VN: "Vietnam" }}
-                        searchPlaceholder="Find Country"
-                      />
-                    }
                   />
                 )}
               </div>

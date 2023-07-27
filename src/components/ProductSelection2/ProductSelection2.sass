@@ -1,0 +1,133 @@
+.ProductSelection
+    display: flex
+    height: 100%
+    .sideBar
+        max-width: 365px
+        padding: 16px 20px 20px
+        background: #ffffff
+        overflow: auto
+        min-width: 200px
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+            background-color: #F5F5F5
+        &::-webkit-scrollbar
+            width: 6px
+            background-color: #F5F5F5
+        &::-webkit-scrollbar-thumb
+            background-color: #e3e8ef
+
+    .logo
+        margin-bottom: 41px
+li.ant-menu-item.ant-menu-item-selected
+    background-color: transparent !important
+    border-radius: 12px
+    color: #47546B !important
+    &::after
+        border-right: none
+.content-card
+    display: flex
+    &::-webkit-scrollbar-track
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+        background-color: #F5F5F5
+    &::-webkit-scrollbar
+        width: 6px
+        height: 5px
+        background-color: #F5F5F5
+    &::-webkit-scrollbar-thumb
+        background-color: #e3e8ef
+.content-container
+    background-color: #EEF3FC
+    width: 100%
+    display: flex
+    overflow: auto
+    height: 100%
+    .content-container-content
+        margin: auto
+        padding: 50px
+        max-width: 1050px
+    .content-title
+        padding: 50px 20px
+        background: #FFFFFF
+        border-radius: 16px
+        margin-bottom: 40px
+    .business
+        font-weight: 900
+        font-size: 24px
+        line-height: 150%
+        display: flex
+        align-items: center
+        text-align: center
+        color: #111729
+        display: flex
+        justify-content: center
+    .sub-title
+        font-weight: 400
+        font-size: 14px
+        line-height: 24px
+        display: flex
+        align-items: center
+        text-align: center
+        color: #47546B
+        font-family: 'Lora'
+        font-style: normal
+        justify-content: center
+.sideBar
+    .ant-menu-sub.ant-menu-inline
+        background: #ffffff
+    .ant-menu-submenu-title
+        border: 1px solid #E3E8EF
+        border-radius: 12px
+        height: 57px !important
+        &:hover
+            color: #111729 !important
+        &:active
+            background: transparent !important
+            color: #111729 !important
+    .ant-menu-item
+        &:hover
+            color: #111729 !important
+        &:active
+            background: transparent !important
+            box-shadow: none !important
+    .ant-menu-submenu-arrow, .ant-menu-submenu-selected
+        color: #111729 !important
+
+.faq
+    background: #FFFFFF
+    border: 1px solid #E3E8EF
+    border-radius: 12px
+    margin-top: 40px
+    align-items: center
+.faq_header
+    display: flex
+    padding: 12px 16px
+    background: #F1F4F8
+    border-bottom: 1px solid #E3E8EF
+    border-radius: 12px 12px 0px 0px
+.question_mark
+    margin-right: 12px
+    span
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 500
+        font-size: 14px
+        line-height: 150%
+        color: #111729
+.faq_content
+    padding: 16px
+    .title_question
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: 700
+        font-size: 12px
+        line-height: 150%
+        color: #111729
+    .title_answer
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 400
+        font-size: 12px
+        line-height: 150%
+        color: #677489
+    .expand
+        color: #097B40

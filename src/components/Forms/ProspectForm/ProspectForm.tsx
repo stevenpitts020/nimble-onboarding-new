@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Icon from "react-feather";
@@ -13,6 +13,11 @@ import { ISignerDetails } from "../../../store/reducers/type";
 import Input from "../Input/Input";
 import InputWithMask from "../InputWithMask/InputWithMask";
 import Dropdown from "../Dropdown/Dropdown";
+import { AddressAutofill } from "@mapbox/search-js-react";
+import {
+  MAPBOX_ENDPOINT,
+  MAPBOX_TOKEN,
+} from "../../../utils/constants/general";
 
 // We want to track these values in order to avoid unnecessary duplicate checks to the backend
 let lastSSNValue = "";
@@ -23,6 +28,8 @@ let lastPhoneNumberValid = false;
 const ProspectForm: FC<IProspectForm> = (props) => {
   // destructure default values
   const { defaultValues, onValidate, onSubmit, invitee } = props;
+  const [lat, setLat] = useState<number>();
+  const [lng, setLng] = useState<number>();
   const signerId: string = props.signerId || "UNKNOWN";
   if (defaultValues) {
     defaultValues.ssn = defaultValues.ssn || "";
@@ -71,6 +78,7 @@ const ProspectForm: FC<IProspectForm> = (props) => {
     addFormValueIfPresent("employer", data);
     addFormValueIfPresent("selfieDocumentId", data);
     addFormValueIfPresent("consent", data);
+    // addFormValueIfPresent("ein", data);
     return data;
   };
 
@@ -159,11 +167,18 @@ const ProspectForm: FC<IProspectForm> = (props) => {
       return true;
     },
   });
-  const { register, handleSubmit, errors, trigger, control, getValues } =
-    useForm<ISignerDetails>({
-      resolver: yupResolver(schema),
-      mode: "onChange",
-    });
+  const {
+    register,
+    handleSubmit,
+    errors,
+    trigger,
+    control,
+    getValues,
+    setValue,
+  } = useForm<ISignerDetails>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
   // const { loading } = useLoading()
   const documentType = defaultValues?.documentType;
   const issuerOptions = () =>
@@ -210,6 +225,72 @@ const ProspectForm: FC<IProspectForm> = (props) => {
     }
   };
 
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      console.error("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLng(position.coords.longitude);
+        },
+        () => {
+          console.error("Unable to retrieve your location");
+        }
+      );
+    }
+  };
+
+  const getReverseGeocodeng = async (endpoint, longitude, latitude) => {
+    try {
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/${endpoint}/${longitude},${latitude}.json?access_token=${MAPBOX_TOKEN}`
+      );
+      return await response.json();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    getLocation();
+  }, []);
+  useEffect(() => {
+    if (lat && lng && getValues("address") === "") {
+      getReverseGeocodeng(MAPBOX_ENDPOINT, lng, lat).then((place) => {
+        place.features.forEach((item) => {
+          switch (item.place_type[0]) {
+            case "address": {
+              setValue("address", item.text);
+              break;
+            }
+            case "postcode": {
+              setValue("zipCode", item.text);
+              break;
+            }
+            case "place": {
+              setValue("city", item.text);
+              break;
+            }
+            case "region": {
+              if (item.context[0].short_code === "us")
+                setValue("state", item.properties.short_code.slice(-2));
+              break;
+            }
+          }
+        });
+      });
+    }
+  }, [lat, lng]);
+  const clearAddressFieldsHandler = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Backspace") {
+      setValue("address", defaultValues?.address);
+      setValue("zipCode", defaultValues?.zipCode);
+      setValue("city", defaultValues?.city);
+      setValue("state", defaultValues?.state);
+    }
+  };
   return (
     <div
       data-testid="ProspectForm"
@@ -258,7 +339,7 @@ const ProspectForm: FC<IProspectForm> = (props) => {
             />
             <Input
               name="dateOfBirth"
-              label="Birth Date"
+              label="Date of Birth"
               placeholder="yyyy-mm-dd"
               autoComplete="bday"
               defaultValue={FormatHelper.strDateFormat(
@@ -308,21 +389,31 @@ const ProspectForm: FC<IProspectForm> = (props) => {
             <Icon.MapPin />
           </aside>
           <div className="grid">
-            <Input
-              name="address"
-              label="Address"
-              autoComplete="street-address"
-              defaultValue={defaultValues?.address}
-              className="span-8"
-              errors={errors.address}
-              ref={register}
-            />
+            <AddressAutofill
+              accessToken={MAPBOX_TOKEN}
+              options={{
+                language: "en",
+                country: "US",
+              }}
+            >
+              <Input
+                name="address"
+                label="Address"
+                autoComplete="address-line1"
+                defaultValue={defaultValues?.address}
+                className="span-8"
+                errors={errors.address}
+                onKeyDown={clearAddressFieldsHandler}
+                ref={register}
+              />
+            </AddressAutofill>
             <Input
               name="city"
               label="City"
               defaultValue={defaultValues?.city}
               className="span-6"
               errors={errors.city}
+              autoComplete="address-level2"
               ref={register}
             />
             <Dropdown
@@ -332,6 +423,7 @@ const ProspectForm: FC<IProspectForm> = (props) => {
               options={STATES.sort((a, b) => a.length - b.length)}
               className="span-2"
               errors={errors.state}
+              autoComplete="address-level1"
               ref={register}
             />
             <Input

@@ -7,7 +7,6 @@
     margin: auto
     > .photo
       width: 100%
-      border-radius: 1rem
   .action-buttons
     margin-top: 2rem
     text-align: center
@@ -21,14 +20,12 @@
 
 @supports (object-fit: cover)
   .ni-photo-preview
-    position: fixed
     top: 0
     left: 0
     right: 0
     bottom: 0
-    z-index: 10
+    z-index: 3
     > .photo
-      height: 100%
       object-fit: cover
   .action-buttons
     position: fixed

@@ -9,7 +9,7 @@ import Institution from "./services/Institution";
 import Main from "./Main";
 import { config, log } from "./services";
 import { worker } from "./support/msw/browser";
-
+import "./index.css";
 // get our app configs
 const {
   mockAPI,

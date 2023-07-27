@@ -8,6 +8,7 @@ export interface IPreview {
 
 export interface IPhotoCapture {
   onTakePhoto: (photoDataUri: string) => void;
+  setIsCameraReady?: (isCameraReady) => void;
   className?: string;
   style?: React.CSSProperties;
   title?: string;
@@ -17,18 +18,20 @@ export interface IPhotoCapture {
   onError?: (error: string) => void;
   onFlipCamera?: () => void;
   allowFlip?: boolean;
+  header?: string;
+  subtitle?: string;
 }
 
 export interface IWhiteFlash {
   show: boolean;
 }
 export interface IPhotoCaptureView {
-  capture: () => void;
+  capture?: () => void;
   props: IPhotoCapture;
   height: number;
   width: number;
   allowFlip: boolean | undefined;
   onFlipCamera: (() => void) | undefined;
   webcamRef: React.RefObject<Webcam>;
-  handleNoCameraError(error: string): void;
+  handleNoCameraError(): void;
 }

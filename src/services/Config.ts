@@ -28,6 +28,8 @@ class Config {
 
   public readonly skipRoutes: boolean;
 
+  public readonly flow: string;
+
   public readonly gtmID: string | undefined;
 
   public readonly gtmAuth: string | undefined;
@@ -63,6 +65,8 @@ class Config {
     this.mockPhotos = env.REACT_APP_MOCK_PHOTOS === "true";
 
     this.skipRoutes = env.REACT_APP_SKIP_ROUTES === "true";
+
+    this.flow = env.REACT_APP_FLOW;
 
     // google tag manager var's
     this.gtmID = env.REACT_APP_GTM_ID;

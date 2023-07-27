@@ -8,6 +8,7 @@ import {
 import { useLoading, LoadingProvider } from "./LoadingContext";
 import { useConsents, ConsentsProvider } from "./ConsentsContext";
 import { BsaProvider, useBsa } from "./BsaContext";
+import AuthProvider from "./AuthContext";
 
 export {
   ProspectContext,
@@ -23,4 +24,5 @@ export {
   ConsentsProvider,
   BsaProvider,
   useBsa,
+  AuthProvider,
 };

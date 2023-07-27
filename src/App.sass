@@ -1,5 +1,5 @@
 @import 'styles/index.sass'
-
+@import '~antd/dist/antd.css'
 // temporary
 nav ul
   display: flex
@@ -8,3 +8,16 @@ nav ul
 nav li
   flex: auto
   list-style: none
+
+.overlay
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, 0.2)
+  z-index: 3000
+
+  display: flex
+  justify-content: center
+  align-items: center

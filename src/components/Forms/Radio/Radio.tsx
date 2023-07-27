@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useUID } from "react-uid";
 import "../Input/Input.sass";
 import "./Radio.sass";
@@ -7,9 +7,21 @@ import { IProps } from "./types";
 const Radio = React.forwardRef<HTMLInputElement, IProps>((props, ref) => {
   const uid = useUID();
   const testID = props["data-testid"] || `${props.name}_${props.defaultValue}`;
+  const elRef = useRef(null);
+  const scrollToRadioHandler = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop - window.innerHeight / 2,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={`form-group ${props.className}`} data-testid={uid}>
-      <div className="form-fields">
+      <div
+        ref={props.scrollToRadio ? elRef : null}
+        onClick={() => props.scrollToRadio && scrollToRadioHandler(elRef)}
+        className="form-fields"
+      >
         <input
           className="form-input-radio"
           type="radio"

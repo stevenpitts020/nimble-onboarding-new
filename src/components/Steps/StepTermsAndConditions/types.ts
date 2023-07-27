@@ -1,15 +1,16 @@
-import React, { ChangeEvent } from "react";
-
+import { MouseEventHandler } from "react";
 export interface IStepTermsAndConditions {
-  className?: string;
-  style?: React.CSSProperties;
+  activeDisclosure: string;
+  setActiveDisclosure: (id: string) => void;
+  onConsent?: () => void;
 }
 
-export interface IStepTermsAndConditionsView {
-  props: IStepTermsAndConditions;
-  isChecked: boolean;
-  isOpen: boolean;
-  onAction: () => void;
-  onButtonClick(): void;
-  onCheck(event: ChangeEvent<HTMLInputElement>): void;
+export interface ISideMenuItem {
+  key: string;
+  isActive: boolean;
+  setIsActive: MouseEventHandler<HTMLDivElement>;
+  disclosure: {
+    title: string;
+    subtitle: string;
+  };
 }

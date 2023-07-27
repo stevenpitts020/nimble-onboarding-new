@@ -30,7 +30,7 @@ const Loading: React.FC<ILoading> = ({
       <div style={{ width, height }}>
         <Lottie config={animationOptions} />
       </div>
-      {text}
+      <p className="text-xl font-bold text-white">{text}</p>
     </div>
   );
 };

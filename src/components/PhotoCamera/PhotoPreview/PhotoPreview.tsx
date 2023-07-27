@@ -1,21 +1,22 @@
 import React, { FC } from "react";
 import { IPhotoPreview } from "./types";
-
+import "../PhotoPreviewWithControls/photo-preview.sass";
 const defaultProps = {
   alt: "Example",
 };
 
-const PhotoPreview: FC<IPhotoPreview> = (props) => (
+const PhotoPreview: FC<IPhotoPreview> = ({
+  className,
+  style,
+  imageData,
+  alt,
+}) => (
   <div
     data-testid="PhotoPreview"
-    className={`ni-photo-preview ${props.className}`}
-    style={props.style}
+    className={`ni-photo-preview ${className}`}
+    style={style}
   >
-    {props.imageData ? (
-      <img alt={props.alt} src={props.imageData} className="photo" />
-    ) : (
-      <p>We couldn&apos;t capture your last photo. Can you try again?</p>
-    )}
+    {imageData && <img alt={alt} src={imageData} className="photo" />}
   </div>
 );
 

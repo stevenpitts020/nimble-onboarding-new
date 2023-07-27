@@ -52,7 +52,7 @@ const StepPersonalInfo: React.FC<IStepPersonalInfo> = (
       // update state
       await updateSigner({ ...prospect.signer, ...data });
       setLoading(false);
-      history.push("/onboarding/choose-products");
+      history.push("/onboarding/second-co-applicant");
     }
   };
 

@@ -1,18 +1,30 @@
 import React from "react";
 import "./ErrorMessage.sass";
 import { IErrorMessage } from "./types";
+import clsx from "clsx";
 
-const ErrorMessage: React.FC<IErrorMessage> = (props: IErrorMessage) => {
-  if (props.errors) {
+const ErrorMessage: React.FC<IErrorMessage> = ({
+  errors,
+  className,
+  invisible,
+}) => {
+  if (errors) {
     return (
       <span
         role="alert"
-        className={
-          props.className ? `${props.className} field-error` : "field-error"
-        }
+        className={clsx(className, "field-error")}
         data-testid="ErrorMessage"
       >
-        {props.errors.message}
+        {errors.message}
+      </span>
+    );
+  } else if (invisible) {
+    return (
+      <span
+        className={clsx(className, "field-error invisible")}
+        data-testid="ErrorMessageInvisible"
+      >
+        No error
       </span>
     );
   }

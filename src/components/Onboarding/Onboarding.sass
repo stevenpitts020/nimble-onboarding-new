@@ -1,5 +1,22 @@
 @import '../../styles/common'
+@import '../Steps/util/_mixins'
 $bg-cards-space: 2rem
+$sidebar-height: calc(100vh - (75px + 4rem))
+
+.ni-onboarding-wrap-fix-height
+  max-height: 100vh
+  .ni-onboarding-content-fix-height
+    @include Scrolable()
+    overflow-y: auto
+    max-height: calc(100vh - 112px)
+
+.mainContainer-full-wrap
+  height: 100%
+  max-height: 100%
+  overflow-y: auto
+  display: flex
+  padding: 1rem 0
+
 .mainContainer_wrapper
   max-width: $max-content-width
   margin: auto
@@ -43,3 +60,17 @@ $bg-cards-space: 2rem
     opacity: 0
   to
     opacity: 1
+
+.ni-sidebar-fixed
+  min-width: 361px
+
+.ni-scrrolable-standart-footer
+  max-height: calc(100vh - 5rem)
+  overflow-y: auto
+  padding: 20px 0
+
+.ni-sidebar-scrollable
+  @include Scrolable()
+  overflow-y: auto
+  max-height: $sidebar-height
+  min-height: $sidebar-height

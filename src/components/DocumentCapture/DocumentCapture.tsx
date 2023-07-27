@@ -137,7 +137,7 @@ const DocumentCapture: React.FC<IDocumentCapture> = (
         );
       video!.onplaying = () => {
         updateScanFeedback(
-          "Place the front of your document in front of the camera",
+          `Please scan the FRONT of your ${documentType} first`,
           "waiting"
         );
       };
@@ -371,12 +371,12 @@ const DocumentCapture: React.FC<IDocumentCapture> = (
         detectionStatus = 0;
         if (!isFrontSideDone) {
           updateScanFeedback(
-            "Place the front of your document in front of the camera",
+            `Please scan the FRONT of your ${documentType}`,
             "waiting"
           );
         } else {
           updateScanFeedback(
-            "Place the back of your document in front of the camera",
+            `Please scan the BACK of your ${documentType}`,
             "waiting"
           );
         }

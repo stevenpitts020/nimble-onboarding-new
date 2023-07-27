@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./StepInstructions.sass";
-import { ArrowRight, AlertCircle } from "react-feather";
+import { AlertCircle } from "react-feather";
 import { InstitutionContext } from "../../../store/InstitutionContext";
 import image from "./illustration.svg";
 import {
@@ -11,6 +11,7 @@ import {
 } from "../../../store";
 import { log } from "../../../services";
 import { IStepInstructions } from "./types";
+import longArrowRight from "./longArrowRight.svg";
 
 const defaultProps = {
   title: "Open your account in as little as 90 seconds",
@@ -33,7 +34,7 @@ const StepInstructions: React.FC<IStepInstructions> = (props) => {
     log.info("Clean signer", "checkIfCompleted");
     cleanSignerInformation();
 
-    history.push("/onboarding/terms-and-conditions");
+    history.push("/onboarding/business-or-personal");
   };
 
   return (
@@ -44,13 +45,14 @@ const StepInstructions: React.FC<IStepInstructions> = (props) => {
     >
       <div className="ni-step-instructions-illustration">
         <h1>
-          <small>
-            Welcome to
-            {institution?.name}
+          <small className="text-2xl font-bold text-greenDarker">
+            Welcome to {institution?.name}
           </small>
-          <span data-testid="invited-by">{props.title}</span>
+          <span className="font-bold my-2" data-testid="invited-by">
+            {props.title}
+          </span>
         </h1>
-        <p>
+        <p className="mt-3">
           {institution?.name} uses NimbleFi as a third-party technology platform
           provider to help you open a new deposit account quickly and securely.
         </p>
@@ -113,11 +115,13 @@ const StepInstructions: React.FC<IStepInstructions> = (props) => {
         <div className="ni-step-instructions-footer">
           <button
             onClick={onContinue}
-            className="button is-pill is-green has-icon-after"
+            className="buttonFont flex bg-greenLight text-poppins text-white pt-[13px] pb-[14px] pl-[26px] pr-[31px] text-base rounded-lg float-right hover:green"
             data-testid="stepContinue"
           >
-            Let&apos;s Go
-            <ArrowRight />
+            Let&apos;s Go!
+            <div className="ml-3.5">
+              <img src={longArrowRight} alt="long arrow right" />
+            </div>
           </button>
         </div>
       </div>

@@ -184,5 +184,10 @@ const FormatHelper = {
   },
   parseDateString: (_value: Date, originalValue: string | Date) =>
     originalValue === "" ? null : moment(originalValue).toDate(),
+  currencyUSAFormat: new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }),
 };
 export default FormatHelper;

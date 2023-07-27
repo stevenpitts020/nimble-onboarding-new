@@ -4,17 +4,17 @@ import { useDocumentState, useConsents } from "../../store";
 import { log } from "../../services";
 import { UrlContext } from "../../store/UrlContext";
 import Config from "../../services/Config";
-
+// TOOD: - temp solution (commented steps)
 const STEPS_PROTECTED_FOR_REFRESH = [
-  "back",
+  // "back",
   "selfie",
   "personal-info",
   "choose-amount",
   "choose-products",
   "bsa-questionnaire",
   "invite-signers",
-  "front",
-  "capture-documents",
+  // "front",
+  // "capture-documents",
 ];
 
 function UrlStateManager(): React.ReactElement {

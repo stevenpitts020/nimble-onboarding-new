@@ -5,13 +5,15 @@ export interface IStepFrontDocument {
   style?: React.CSSProperties;
 }
 export interface IStepFrontDocumentView {
-  photo: string;
+  photo?: string;
   cameraState: string;
-  animationOptions: any;
   error: string | undefined;
   photoCaptureMsg: string;
-  status: string;
+  documentType: string;
   handleTakePhoto(photoDataUri: string): void;
-  handleRestartPhoto(): void;
-  handleContinue(): Promise<void>;
+}
+
+export interface ITipItem {
+  number: number;
+  text: string;
 }

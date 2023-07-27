@@ -3,11 +3,14 @@ import { waitFor, screen } from "@testing-library/react";
 import StepCaptureDocuments from "./StepCaptureDocuments";
 import { DocumentsProvider } from "../../../store";
 import renderWithRouter from "../../../support/router/renderWithRouter";
+import { LayoutProvider } from "../../../store/LayoutContext";
 
 const app = (props: any) => (
-  <DocumentsProvider>
-    <StepCaptureDocuments {...props} />
-  </DocumentsProvider>
+  <LayoutProvider>
+    <DocumentsProvider>
+      <StepCaptureDocuments {...props} />
+    </DocumentsProvider>
+  </LayoutProvider>
 );
 
 describe("<StepFrontDocument />", () => {
@@ -19,11 +22,5 @@ describe("<StepFrontDocument />", () => {
       const container = screen.getByTestId("StepCaptureDocuments");
       expect(container).toBeInTheDocument();
     });
-  });
-  test("button should be disabled", () => {
-    const props = {};
-    renderWithRouter(app(props), { route: "/onboarding/capture-documents" });
-    const button = screen.getByText(/Scan Document/);
-    expect(button).toBeDisabled();
   });
 });

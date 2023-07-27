@@ -1,24 +1,22 @@
-import React, { useRef, useCallback, FC } from "react";
+import React, { FC, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
-import { log } from "../../../services";
 import NoCameraMessage from "../NoCameraMessage/NoCameraMessage";
-import "./photo-capture.sass";
-import useWindowDimensions from "../../windowDimensions";
-import { IPhotoCapture } from "./type";
 import PhotoCaptureView from "./PhotoCaptureView";
+import { log } from "../../../services";
+import { IPhotoCapture } from "./type";
+import "./photo-capture.sass";
 
 const defaultProps = {
-  width: 1200,
-  height: 740,
+  width: 640,
+  height: 420,
   facingMode: "user",
 };
 
 const PhotoCapture: FC<IPhotoCapture> = (props: IPhotoCapture) => {
   const [message, setMessage] = React.useState("");
-  const { height, width } = useWindowDimensions();
 
   // need to destructure this prop
-  const { onTakePhoto, onFlipCamera, allowFlip } = props;
+  const { onFlipCamera, onTakePhoto, allowFlip } = props;
   const webcamRef = useRef<Webcam>(null);
 
   const capture = useCallback(() => {
@@ -55,13 +53,13 @@ const PhotoCapture: FC<IPhotoCapture> = (props: IPhotoCapture) => {
 
   return (
     <PhotoCaptureView
-      capture={capture}
-      height={height}
+      height={defaultProps.height}
       props={props}
-      width={width}
+      width={defaultProps.width}
       allowFlip={allowFlip}
       handleNoCameraError={handleNoCameraError}
       onFlipCamera={onFlipCamera}
+      capture={capture}
       webcamRef={webcamRef}
     />
   );

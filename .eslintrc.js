@@ -2,6 +2,7 @@ module.exports = {
     env: {
       browser: true,
       es2021: true,
+      node: true
     },
     extends: [
       "eslint:recommended",
@@ -29,11 +30,10 @@ module.exports = {
       "react/display-name": "off",
       "react/prop-types": "off",
     },
-    ignorePatterns: ["webpack.config.js", ".eslintrc.js", "node_modules", "types"],
+    ignorePatterns: ["webpack.config.js", "tailwind.config.js", ".eslintrc.js", "node_modules", "types"],
     settings: {
       react: {
         version: "17",
       },
     },
   };
-  

@@ -1,58 +1,86 @@
-import React from "react";
-import { Lottie } from "@alfonmga/react-lottie-light-ts";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AlertCircle } from "react-feather";
+import { Layout, SIDEBAR_TYPE } from "../../NewLayout/Layout";
 import PhotoCapture from "../../PhotoCamera/PhotoCapture/PhotoCapture";
-import PhotoPreviewWithControls from "../../PhotoCamera/PhotoPreviewWithControls/PhotoPreviewWithControls";
+import TipItem from "./TipItem";
 import { IStepFrontDocumentView } from "./types";
+import { ReactComponent as Loading } from "./loading.svg";
+import "./StepFrontDocument.sass";
+
+const TIPS_LIST = [
+  {
+    number: 1,
+    text: "Check if the corners of the ID are visible against the backdrop",
+  },
+  {
+    number: 2,
+    text: "Check if the all ID data is legible",
+  },
+  {
+    number: 3,
+    text: "Check if the ID is in color",
+  },
+];
 
 const StepFrontDocumentView = ({
   cameraState,
   photoCaptureMsg,
   handleTakePhoto,
-  animationOptions,
-  handleRestartPhoto,
-  photo,
-  handleContinue,
   error,
-  status,
-}: IStepFrontDocumentView) => (
-  <div
-    data-testid="step-front"
-    className={`step-front camera-step text-center ${cameraState}`}
-  >
-    <PhotoCapture
-      facingMode="environment"
-      title={photoCaptureMsg}
-      onTakePhoto={handleTakePhoto}
-    />
+  documentType,
+}: IStepFrontDocumentView) => {
+  const [isCameraReady, setIsCameraReady] = useState(false);
 
-    <div className="intro-text">
-      <h3>We need to verify your identity</h3>
-      <h2>
-        Let’s start by scaning the <b>Front</b> of your Document
-      </h2>
-      <div className="camera-animation">
-        <Lottie config={animationOptions} />
+  const {
+    location: { pathname },
+  } = useHistory();
+  const isFront = pathname.replace("/onboarding/", "") === "front";
+  const isBack = pathname.replace("/onboarding/", "") === "back";
+
+  return (
+    <Layout
+      showTimer={false}
+      sidebarType={SIDEBAR_TYPE.NAVIGATION}
+      hideHeader
+      hideBackButton={isBack}
+      hideNextButton
+      classNameContainer="w-full h-full flex flex-col items-center bg-zirkon camera-container"
+    >
+      {!isCameraReady && (
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Loading className="h-24 w-24 animate-spin" />
+        </div>
+      )}
+      <div
+        data-testid="step-front"
+        className={`text-center ${cameraState} ${
+          !isCameraReady && "opacity-0"
+        }`}
+      >
+        <PhotoCapture
+          facingMode="environment"
+          title={photoCaptureMsg}
+          onTakePhoto={handleTakePhoto}
+          setIsCameraReady={setIsCameraReady}
+          header={`Please scan the ${
+            isFront ? "FRONT" : "BACK"
+          } of your ${documentType.replace(/%20/g, " ")} or take a photo`}
+        />
+
+        {error && (
+          <div role="alert" className="alert toast is-error u-margin-top-xl">
+            <AlertCircle /> {error}
+          </div>
+        )}
       </div>
-      <button onClick={handleRestartPhoto} className="button is-pill is-green">
-        Open Camera
-      </button>
-    </div>
-
-    <PhotoPreviewWithControls
-      alt="Front Preview"
-      imageData={photo}
-      onRepeat={handleRestartPhoto}
-      onContinue={handleContinue}
-      loading={status === "create"}
-    />
-
-    {error && (
-      <div role="alert" className="alert toast is-error u-margin-top-xl">
-        <AlertCircle /> {error}
+      <div className="absolute bottom-0 flex justify-between w-full h-12 px-[120px]">
+        {TIPS_LIST.map(({ number, text }) => (
+          <TipItem key={number} number={number} text={text} />
+        ))}
       </div>
-    )}
-  </div>
-);
+    </Layout>
+  );
+};
 
 export default StepFrontDocumentView;

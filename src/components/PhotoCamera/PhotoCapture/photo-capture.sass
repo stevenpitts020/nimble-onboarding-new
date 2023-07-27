@@ -1,47 +1,97 @@
 @import '../../../styles/common'
 
 $line-color: white
+$document-border: #0177FB
 
 .ni-photo-capture
-  position: fixed
+  position: relative
+  margin-top: 120px
   @each $param in top, left, right, bottom
-    #{ $param }: 0
+    #{$param} : 0
     text-align: center
-    background: black
-  &-content
-    height: 100%
+  video
+    border-radius: 16px
+  .videoImg
+    border-radius: 16px
+    position: absolute
+  .mozVideo
+    transform: scale(1, 1.14)
+    top: 30px
   .video-container
-    position: relative
-    overflow: hidden
-    height: 100%
-    video
-      width: 100%
-      min-height: 99%
-      margin: auto
-      transform: scaleX(-1)
-      object-fit: cover
+    display: flex
+    justify-content: center
+    border-radius: 16px
+    border: 4px solid white
   .caption
     position: absolute
+    top: 40vh
     z-index: 10
+  .overlay-document
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 1
+
+    @keyframes scan-photo
+      from
+        top: -10px
+      to
+        top: 540px
+
+    &__scan
+      position: relative
+      animation-name: scan-photo
+      animation-duration: 3s
+      animation-iteration-count: infinite
+      animation-timing-function: linear
+      z-index: 1
+      .scan-line
+        width: 105%
+        height: 3px
+        margin-left: -2.5%
+        background-color: $document-border
+        animation-duration: 3.5s
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+        animation-delay: 1s
+        animation-direction: reverse
+        z-index: 1
+      &-shadow
+        position: absolute
+        bottom: 0
+        height: 212px
+        max-height: 70vh
+        width: 100%
+        z-index: 1
+        background: linear-gradient(180deg, rgba(1, 119, 251, 0) 0%, rgba(1, 119, 251, 0.63) 100%)
+
+  .overlay-face
+    width: 45vh
+    height: 60vh
+    z-index: 10
+    position: absolute
+    border: 3px solid $document-border
+    border-radius: 234px
+    left: 50%
+    top: 46%
+    transform: translate(-50%, -50%)
+    box-shadow: 0 0 0 90vh rgba(0, 0, 0, 0.31)
+    overflow: hidden
+
+  .capture-header
+    position: absolute
+    font-size: 1.5rem
+    font-weight: bold
+    color: white
+    top: 4vh
+
   .capture-button
-    position: fixed
-    width: 62px
-    height: 62px
     background-color: #ffffff
     margin: auto
     bottom: 55px
-    margin-left: -31px
     z-index: 10
-    
     &:active
       transform: scale(0.9)
-    &:before
-      content: ''
-      width: 72px
-      height: 72px
-      border: solid 4px #ffffff
-      border-radius: 50%
-      position: absolute
     +for--phone-only
       bottom: 25px
     +for--phone-landscape-only
@@ -54,14 +104,14 @@ $line-color: white
     background-color: transparent
     right: 10vw
     bottom: 55px
-    img 
+    img
       width: 48px
     +for--phone-only
       bottom: 25px
     +for--phone-landscape-only
       bottom: 15px
   .caption
-    top: 50%
+    top: 46%
     left: 50%
     transform: translate(-50%, -50%)
     backdrop-filter: blur(10px)
@@ -104,7 +154,6 @@ $line-color: white
 // Camera Animations this needs to be refactored
 
 .camera-step
-  max-width: 400px
   overflow: hidden
 
   h2

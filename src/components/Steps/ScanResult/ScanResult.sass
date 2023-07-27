@@ -1,0 +1,26 @@
+.scan-result-sidebar
+  position: fixed
+  right: 0
+  top: 0
+  z-index: 40
+  height: 100vh
+  width: 405px
+  box-sizing: border-box
+  padding: 2px 18px 90px 25px
+  transition: transform 300ms ease-in
+  background-color: #ffffff
+  box-shadow: -4px 4px 20px rgba(69, 130, 204, 0.17)
+  overflow: scroll
+
+.isHidden
+  transform: translateX(405px)
+  transition: transform 300ms ease-out
+
+.sidebar-item
+  max-height: auto
+  transition: max-height .36s ease-out
+  overflow: hidden
+
+.hide-sideBar
+  max-height: 0
+  transition: max-height .36s ease-out

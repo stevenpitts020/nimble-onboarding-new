@@ -4,17 +4,31 @@ import { MemoryRouter as Router } from "react-router-dom";
 import Header from "./Header";
 import { InstitutionContext } from "../../../store/InstitutionContext";
 import { mockInstitution } from "../../../services/__mocks__/Institution";
+import { LayoutContext } from "../../../store/LayoutContext";
+
+const MockLayout = {
+  goToNext: () => {},
+  goToBack: () => {},
+  setShowBackButton: () => {},
+  setShowNextButton: () => {},
+  setShowSideBar: () => {},
+  setShowLogoSideBar: () => {},
+  setShowTimer: () => {},
+  setShowLogoHeader: () => {},
+};
 
 const renderWithProps = (props: any) => {
   const defaultProps = {
     className: "test-me",
   };
   return render(
-    <Router>
-      <InstitutionContext.Provider value={mockInstitution}>
-        <Header {...defaultProps} {...props} />
-      </InstitutionContext.Provider>
-    </Router>
+    <LayoutContext.Provider value={{ ...MockLayout, showLogoHeader: true }}>
+      <Router>
+        <InstitutionContext.Provider value={mockInstitution}>
+          <Header {...defaultProps} {...props} />
+        </InstitutionContext.Provider>
+      </Router>
+    </LayoutContext.Provider>
   );
 };
 

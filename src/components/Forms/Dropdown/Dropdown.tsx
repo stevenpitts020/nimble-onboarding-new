@@ -23,6 +23,7 @@ const Dropdown = React.forwardRef(
             ref={ref}
             placeholder={props.placeholder}
             autoFocus={props.autoFocus}
+            autoComplete={props.autoComplete}
             disabled={props.disabled}
             defaultValue={props.defaultValue}
             onChange={props.onChange}

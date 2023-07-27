@@ -1,0 +1,63 @@
+.ni-sidebar-menu
+
+  .ni-sidebar-menu-top-item
+    width: 100%
+    .done-step 
+      path
+        fill: #0B9F6E
+    
+    .ni-sidebar-top-element
+      padding-left: 33px
+      border-left: 4px solid transparent
+      border-radius: 0
+
+      &.open-item
+        border-color: #0B9F6E
+      
+    .ni-sidebar-sub-element
+      padding-left: 8px
+      color: #677489
+      &:last-child
+        margin-bottom: 21px
+
+      .ni-sidebar-sub-element-state
+        margin-right: 21px
+        &.active
+          circle
+            stroke: #0B9F6E
+
+    .ni-sidebar-sub-mask
+      width: calc(100% - 66px)
+      margin: -8px 18px 
+      border-left: 2px solid
+      border-color: #677489
+      display: block
+      height: 40px
+      min-height: 40px
+      &.done
+        border-color: #0B9F6E
+
+.ni-info-block 
+  width: calc( 100% - 80px )
+  margin: 33px auto
+  display: flex
+  padding: 17px 20px
+  align-items: center
+  background: #F5F8FC
+  border-radius: 3px
+
+  svg
+    min-width: 23px
+    min-height: 23px
+    margin-right: 13px
+  
+  span 
+    font-family: 'Inter'
+    font-style: normal
+    font-weight: 500
+    font-size: 12px
+    line-height: 150%
+
+.ni-sidebar-faq
+  width: calc(100% - 80px)
+  margin: auto

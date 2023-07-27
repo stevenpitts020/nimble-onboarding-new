@@ -9,9 +9,6 @@ export interface IStepBackDocumentView {
   error: string | undefined;
   cameraState: string;
   photo: string;
-  status: string;
-  animationOptions: any;
-  handleContinue(): Promise<void>;
-  handleRestartPhoto(): void;
+  documentType: string;
   handleTakePhoto(photoDataUri: string): void;
 }

@@ -6,6 +6,8 @@
 .field-error
   font-size: $font-size-sm
   color: $error-color
+  &::first-letter
+    text-transform: uppercase
   + .form-fields
     .form-input:focus + .form-label
       color: $error-color

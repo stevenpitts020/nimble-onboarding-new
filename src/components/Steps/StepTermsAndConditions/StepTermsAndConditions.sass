@@ -1,33 +1,35 @@
 @import '../../../styles/common'
-$title-color: #097B40
+$title-color: #070000
+$checkbox-background: #5CB97F
+$checkbox-color: #ffffff
+$background-color: #7B8A9E0A
 *
   box-sizing: border-box
 
 $number-size: 24px
+
+.background
+  background-color: $background-color
+
+.terms-container
+  max-height: 635px
+
 .App main.step-terms-and-conditions
-  +from--tablet
-    padding: 5vh 3vw
   .mainContainer_wrapper
-    max-width: 1440px
+    max-width: 1160px
     .mainContainer
       padding: 0
 
       .terms-content
         position: relative
+        max-width: 920px
         .info
           overflow: hidden
           h1
-            margin-bottom: 2rem
             font-size: 32px
             text-align: center
             +from--desktop
               text-align: left
-            small
-              font-size: .75em
-              color: #097B40
-              line-height: 1.2
-              margin-bottom: .25em
-              opacity: 1
           p
             color: $gray
             line-height: 1.5
@@ -62,43 +64,30 @@ $number-size: 24px
         right: 0
         background: $title-color
         box-shadow: 0px 10px 40px rgba(black, 0.15)
-        min-height: 96px
-        padding: 1rem
         display: flex
         flex-wrap: wrap
         align-items: center
         justify-content: space-between
         border-bottom-right-radius: 16px
         border-bottom-left-radius: 16px
-        +from--tablet
-          padding: 1rem 2rem
         +from--desktop
           position: relative
           z-index: 2
-        .checkbox-with-text, .button.is-pill.is-green
-          margin: .5rem
         .button
-          background: #fff
-          color: $title-color
-          border-radius: 16px 0 16px 0
-          font-size: 16px
-          transition: all 400ms cubic-bezier(.47,1.64,.41,.8)
-
-          +from--laptop
-            padding-left: 5rem
-            padding-right: 5rem
+          border-radius: 8px
 
         .checkbox-with-text
           align-items: center
           .ni-checkbox
+            margin-right: 16px
             .checkbox
               border: 0
-              background: #fff
+              background: $checkbox-background
               color: transparent
               svg
                 stroke: currentColor
               &.checked
-                color: $title-color
+                color: $checkbox-color
 
           p
             font-size: 1rem

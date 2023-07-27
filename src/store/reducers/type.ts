@@ -70,8 +70,14 @@ export interface ISignerDetails {
   documentIssuer: string | undefined;
   selfieDocumentId: string | undefined;
   consent: boolean | undefined;
+  ein?: string | undefined;
   securityToken?: string | undefined;
   validated?: boolean;
+  fundsDueDate?: Date;
+  borrowed?: boolean;
+  incomeFunds?: number;
+  incomeWeek?: string;
+  fees?: number;
 }
 
 export interface IInvitedSigner {

@@ -1,34 +1,25 @@
-import React, { useState } from "react";
-import "./StepTermsAndConditions.sass";
+import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
+import StepTermsAndConditionsView from "./StepTermsAndConditionsView";
+import "./StepTermsAndConditions.sass";
 import { useConsents } from "../../../store";
-import { IStepTermsAndConditions } from "./types";
-import StepTermsAndConditionsView from "./StepVerifyEmailView";
 
-const StepTermsAndConditions: React.FC<IStepTermsAndConditions> = (
-  props: IStepTermsAndConditions
-) => {
+const StepTermsAndConditions = () => {
   const history = useHistory();
+  const [activeDisclosure, setActiveDisclosure] = useState("0");
+
   const { updateConsent } = useConsents();
-  const [isChecked, setIsChecked] = React.useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const onButtonClick = () => {
-    if (isChecked) {
-      updateConsent("terms", true);
-      history.push("/onboarding/capture-documents");
-    } else {
-      setIsOpen(true);
-    }
-  };
+
+  const onConsent = useCallback(() => {
+    updateConsent("terms", true);
+    history.goBack();
+  }, [updateConsent]);
 
   return (
     <StepTermsAndConditionsView
-      props={props}
-      isChecked={isChecked}
-      onButtonClick={onButtonClick}
-      onCheck={() => setIsChecked(!isChecked)}
-      isOpen={isOpen}
-      onAction={() => setIsOpen(false)}
+      activeDisclosure={activeDisclosure}
+      setActiveDisclosure={setActiveDisclosure}
+      onConsent={onConsent}
     />
   );
 };

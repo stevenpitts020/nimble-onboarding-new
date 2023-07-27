@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { log } from "../../../services";
 import {
@@ -8,9 +8,8 @@ import {
 } from "../../../store/DocumentsContext";
 import { LoadingContext } from "../../../store/LoadingContext";
 import { InstitutionContext } from "../../../store/InstitutionContext";
-import animationData from "../../../animations/camera.json";
-import defaultOptions from "../../../animations/options";
 import StepBackDocumentView from "./StepBackDocumentView";
+import { useLayout } from "../../../store/LayoutContext";
 import { IStepBackDocument } from "./types";
 
 const StepBackDocument: React.FC<IStepBackDocument> = () => {
@@ -21,17 +20,18 @@ const StepBackDocument: React.FC<IStepBackDocument> = () => {
   const { status, error } = useDocumentState();
   const dispatch = useDocumentDispatch();
 
+  const paramsArray = history.location.search.split("&");
+
   const [photo, setPhoto] = useState("");
   const [cameraState, setCameraState] = useState(
     photo ? "camera-active" : "closed"
   );
 
-  const animationOptions = {
-    ...defaultOptions,
-    animationData,
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
+    if (paramsArray[0] === "?camera-active") {
+      log.info("Using fallback", "open camera");
+      setCameraState("camera-active");
+    }
     const goToNextStep = () => {
       log.info("continue to next step", "cameraPhoto");
       dispatch({ type: "cancel" });
@@ -43,37 +43,45 @@ const StepBackDocument: React.FC<IStepBackDocument> = () => {
     if (status === "failure") {
       setCameraState("closed");
     }
-  }, [status, history, dispatch]);
+  }, [status]);
 
   const handleTakePhoto = (photoDataUri: string) => {
     log.info("back done", "cameraPhoto");
     setPhoto(photoDataUri);
     setCameraState("preview-active");
+    dispatch({ type: "resolve" });
   };
 
-  const handleContinue = async () => {
+  const handleContinue = useCallback(async () => {
     // post to server and save state
     setLoading(true);
     await uploadDocument(dispatch, photo, "back", institution!.id);
     setLoading(false);
-  };
+  }, [photo, dispatch, institution]);
 
-  const handleRestartPhoto = () => {
+  const handleRestartPhoto = useCallback(() => {
     log.info("remove back and open cam", "cameraPhoto");
     setPhoto("");
     setCameraState("camera-active");
-  };
+  }, []);
+
+  const goToBack = useCallback(() => {
+    if (photo) {
+      handleRestartPhoto();
+    } else {
+      history.goBack();
+    }
+  }, [photo, history, handleRestartPhoto]);
+
+  useLayout({ showNextButton: !!photo, goToNext: handleContinue, goToBack });
 
   return (
     <StepBackDocumentView
       error={error}
-      animationOptions={animationOptions}
       cameraState={cameraState}
-      handleContinue={handleContinue}
-      handleRestartPhoto={handleRestartPhoto}
       handleTakePhoto={handleTakePhoto}
       photo={photo}
-      status={status}
+      documentType={paramsArray[1]}
     />
   );
 };

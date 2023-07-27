@@ -1,0 +1,219 @@
+@import '../../styles/common'
+
+$number-size: 24px
+$title-color: #097B40
+$instruction-color: #5F9BA8
+$instruction-bg-color: #F6F7FC
+
+$step-bg-color: #81BECC
+$step-text-color: $light
+
+.step-intro, .step-initial-consent
+  .mainContainer_wrapper
+    width: 100%
+    +from--laptop
+      .mainContainer
+        overflow: hidden
+        padding: 0
+        @include ie-only
+          overflow: auto
+    +from--tablet
+      min-width: 600px
+
+.ni-step-instructions
+  height: 100%
+  width: 100%
+  font-family: 'Lora'
+  font-style: normal
+  max-width: 1440px
+  margin: auto
+  .ni-institution-general
+    height: 100%
+    width: 100%
+    display: flex
+    .ni-list-general-data
+      width: 100%
+      background: #EEF3FC
+      position: relative
+      max-width: 65%
+      height: 100%
+      display: flex
+      flex-direction: column
+      padding-top: 7%
+      overflow: hidden
+      align-items: center
+      z-index: 1000
+      *
+        z-index: 1000
+      .ni-list-general-data-bg
+        position: absolute
+        bottom: 0
+        left: auto
+        right: auto
+        width: 100%
+        z-index: 1
+      .ni-institution-logo
+        max-width: 149px
+      .ni-institution-name
+        margin: 15px 0
+        display: flex
+        text-align: center
+        flex-direction: column
+        h2
+
+          font-weight: 700
+          font-size: 32px
+          line-height: 125%
+          color: #111729
+        p
+          font-weight: 400
+          font-size: 16px
+          line-height: 150%
+          text-align: center
+          color: #677489
+      h1
+        font-weight: 700
+        font-size: 56px
+        line-height: 120%
+        text-align: center
+        color: #111729
+        max-width: 500px
+    .ni-input-general
+      background-color: white
+      height: 100%
+      width: 35%
+      display: flex
+      align-items: center
+      .error
+        color: red
+      .ni-input-container
+        width: 80%
+        margin: auto
+        h3
+          font-weight: 900
+          font-size: 24px
+          line-height: 150%
+          color: #111729
+          text-align: start
+        .detail
+          font-family: 'Lora'
+          font-style: normal
+          font-weight: 400
+          font-size: 16px
+          line-height: 24px
+          color: #47546B
+          margin-top: 8px
+          display: flex
+          align-items: center
+          color: #47546B
+          margin-bottom: 40px
+          text-align: start
+        button
+          height: 48px
+          margin-top: 20px
+          background: #000000
+          border-radius: 5px
+          padding: 12px 24px
+          border: none
+          font-weight: 600
+          font-size: 16px
+          line-height: 24px
+          color: #FFFFFF
+        .ni-checkbox-container
+          label
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+            color: #47546B
+            text-align: start
+            font-family: 'Lora'
+          u
+            cursor: pointer
+        .input-phone-number
+          margin-bottom: 30px
+          .firt-input-part
+            display: flex
+            input
+              border: none
+              margin-left: 10px
+              color: #111F39
+              background: transparent
+              &:focus
+                outline: none
+              &::placeholder
+                color: #CDD5E0
+        .tips
+          text-align: end
+          strong
+            color: black
+        .height-20
+          svg
+            height: 20px
+        .label-phone
+          font-family: 'Roboto'
+          font-style: normal
+          font-weight: 600
+          font-size: 16px
+          line-height: 150%
+          display: flex
+          align-items: center
+          color: #111729
+          margin-bottom: 8px
+        .react-tel-input
+          margin: 13px 0
+          .special-label
+            font-weight: 500
+            font-size: 16px
+            line-height: 150%
+            color: #111729
+            padding-bottom: 8px
+          .form-control
+            width: 100%
+            padding: 12px
+            background: #FFFFFF
+            border: 1px solid #C1C9D9
+            border-radius: 8px
+        .ni-checkbox-container
+          width: 100%
+          margin: 15px auto
+          display: flex
+          margin-bottom: 15px
+          margin-top: 5px
+          input
+            display: flex
+            align-items: flex-start
+            height: 100%
+            margin-right: 16px
+            margin-top: 5px
+            &:checked
+              & + label
+                &:after
+                  content: ''
+                  display: block
+                  position: absolute
+                  top: 2px
+                  left: 9px
+                  width: 6px
+                  height: 14px
+                  border: #677489
+                  border-width: 0 2px 2px 0
+                  transform: rotate(45deg)
+          .ni-checkbox-text
+            font-weight: 400
+            font-size: 14px
+            line-height: 24px
+            display: flex
+            align-items: center
+            color: #47546B
+            padding: 25px 25px 0
+button:disabled, button[disable]
+  cursor: default
+  background: #E1E2E7 !important
+  pointer-events: none
+.pd-1
+  padding-top: 1px
+.-bottom-70
+  bottom: 70px
+.bottom-20
+  transform: rotate(180deg)
+  bottom: -20px

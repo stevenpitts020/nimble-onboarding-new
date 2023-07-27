@@ -1,0 +1,111 @@
+@import '../util/_mixins'
+
+.ni-funds-due-date-field
+  @include OutbordingCenterBlock(640px, 380px)
+  display: flex
+  flex-direction: row
+
+  .switch
+    margin-bottom: 16px
+    .form-fields
+      flex-direction: row
+      flex-wrap: nowrap
+      align-content: center
+
+      // Replaces styles for switch need "!important" preferences
+      .switch-wrap
+        &.checked
+          .react-switch-handle
+            transform: translateX(18px) !important
+
+        .react-switch-bg
+          width: 40px !important
+          height: 24px !important
+
+        .react-switch-handle
+          width: 20px !important
+          height: 20px !important
+          top: 2px !important
+          transform: translateX(2px) !important
+
+
+      .form-label
+        @include InterText($style: normal, $weight: 400, $size: 16px, $line-height: 24px)
+        margin: 0 20px 0 0
+        color: #677489
+
+  
+  .ni-funds-due-date-field-date-label
+    @include InterText($style: normal, $weight: 400, $size: 16px, $line-height: 24px)
+    display: block
+
+  .react-datepicker-wrapper
+    .react-datepicker
+      &__input-container
+        input
+          @include InterText($style: normal, $weight: 400, $size: 16px, $line-height: 24px)
+          width: 257px
+          height: 48px
+          border: 1px solid #0177FB
+          border-radius: 8px
+          outline: unset
+          padding: 0 12px
+
+.react-datepicker-popper
+  .react-datepicker
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12)
+    border-radius: 8px
+    border: 0
+    padding: 18px
+
+    &__triangle
+      display: none
+
+    &__header
+      background-color: transparent
+      border: 0
+      padding: 0
+    
+    &__day-name
+      width: 1.35rem
+
+    &__navigation-icon
+      &:before
+        border-color: #000000
+
+    &__navigation
+      top: 18px
+
+      &--previous
+        left: 10px
+      
+      &--next
+        right: 10px
+
+    &__current-month
+      @include InterText($style: normal, $weight: 500, $size: 13px, $line-height: 16px)
+      margin-bottom: 16px
+    
+    &__month 
+      margin: 0
+
+    &__day
+      @include InterText($style: normal, $weight: 400, $size: 12px, $line-height: 20px)
+      width: 20px
+      margin: 3px
+      padding: 3px
+      color: #677489
+      &:hover
+        color:#111729
+        background-color: transparent
+      &--outside-month
+        color: #CCCCCC
+      &--selected
+        background-color: transparent
+        color: #111729
+        font-weight: 600
+      &--keyboard-selected
+         background-color: transparent
+
+
+    

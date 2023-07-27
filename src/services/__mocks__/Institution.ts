@@ -1,5 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
-
 export const mockInstitution = {
   id: "f1f34235-bcaf-4429-8d4f-646b961d0d80",
   slug: "centralbankonline",

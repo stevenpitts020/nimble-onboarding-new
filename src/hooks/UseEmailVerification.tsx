@@ -23,8 +23,6 @@ const useEmailVerificationStatus = (
     }
     confirmEmail();
   }, []);
-
-  // eslint-disable-next-line no-restricted-globals
   return { status, error };
 };
 export default useEmailVerificationStatus;

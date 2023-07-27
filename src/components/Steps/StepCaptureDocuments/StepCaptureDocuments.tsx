@@ -1,8 +1,6 @@
-import React, { useState, useContext, FC } from "react";
+import React, { useState, useContext, FC, useCallback, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { AlertCircle, ArrowRight } from "react-feather";
 import { log } from "../../../services";
-import DocumentCapture from "../../DocumentCapture/DocumentCapture";
 import FormatHelper from "../../../utils/FormatHelper";
 import {
   uploadDocument,
@@ -16,34 +14,40 @@ import ImageToBase64 from "../../../utils/ImageToBase64";
 import DetectOS from "../../../utils/DetectOS";
 import Config from "../../../services/Config";
 import NoCameraMessage from "../../PhotoCamera/NoCameraMessage/NoCameraMessage";
-import "./StepCaptureDocuments.sass";
-import IconDriversLicence from "./iconDriversLicence.svg";
-import IconPassport from "./iconPassport.svg";
+import StepCaptureDocumentsView from "./StepCaptureDocumentsView";
 import { ISignerDetails } from "../../../store/reducers/type";
+import { useLayout } from "../../../store/LayoutContext";
 import { IStepCaptureDocuments } from "./types";
+import "./StepCaptureDocuments.sass";
 
 const StepCaptureDocuments: FC<IStepCaptureDocuments> = () => {
   window.scrollTo(0, 0);
+
   const history = useHistory();
+  const paramsArray = useMemo(
+    () => history.location.search.split("&"),
+    [history.location]
+  );
+
   const { prospect, updateSigner } = useContext(ProspectContext);
   const institution = useContext(InstitutionContext);
-  const [userSelectedDocumentType, setUserSelectedDocumentType] =
-    React.useState("");
+  const [userSelectedDocumentType, setUserSelectedDocumentType] = useState(
+    paramsArray?.[1] || ""
+  );
   const { status, error, documents } = useDocumentState();
   const dispatch = useDocumentDispatch();
   const browser = DetectOS.getBrowser();
   const shouldLoadSdk =
     !(browser.name === "Safari" && parseInt(browser.version, 10) <= 13) &&
     DetectOS.isWebAssemblySupported();
-  const [frontDoc] = useState("");
   const [cameraState, setCameraState] = useState(
-    frontDoc ? "camera-active" : "closed"
+    paramsArray[0] === "?camera-active" ? "camera-active" : "closed"
   );
   const { setLoading } = useContext(LoadingContext);
-  const [message, setMessage] = React.useState("");
+  const [message, setMessage] = useState("");
   // for retry purposes
-  const [tempFrontDoc, setTempFrontDoc] = React.useState("");
-  const [tempBackDoc, setTempBackDoc] = React.useState("");
+  const [tempFrontDoc, setTempFrontDoc] = useState("");
+  const [tempBackDoc, setTempBackDoc] = useState("");
   React.useEffect(() => {
     const goToNextStep = () => {
       log.info("continue to next step", "cameraPhoto");
@@ -71,6 +75,7 @@ const StepCaptureDocuments: FC<IStepCaptureDocuments> = () => {
       setCameraState("closed");
     }
   }, [status, shouldLoadSdk]);
+
   const handleResults = (result: any) => {
     log.info("capture done", "handleResults");
     let backDocUrl: string;
@@ -173,6 +178,7 @@ const StepCaptureDocuments: FC<IStepCaptureDocuments> = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleOpenCamera = () => {
     log.info("Open Camera", "StepCaptureDocument");
     setCameraState("camera-active");
@@ -193,15 +199,22 @@ const StepCaptureDocuments: FC<IStepCaptureDocuments> = () => {
     setMessage(msg);
   };
 
-  const handleDocumentTypeChange = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    setUserSelectedDocumentType(event.currentTarget.id);
-    log.info(
-      "StepCaptureDocuments",
-      `set document type to ${event.currentTarget.id}`
-    );
+  const handleDocumentTypeChange = (documentType) => {
+    setUserSelectedDocumentType(documentType);
+    history.push(`/onboarding/front?camera-active&${documentType}`);
+
+    log.info("StepCaptureDocuments", `set document type to ${documentType}`);
   };
+
+  const goToBack = useCallback(() => {
+    if (cameraState === "camera-active") {
+      setCameraState("closed");
+    } else {
+      history.goBack();
+    }
+  }, [cameraState]);
+
+  useLayout({ showSideBar: cameraState !== "camera-active", goToBack });
 
   // if there is an error, show no camera message
   if (message) {
@@ -219,72 +232,16 @@ const StepCaptureDocuments: FC<IStepCaptureDocuments> = () => {
     );
   }
   return (
-    <div
-      data-testid="StepCaptureDocuments"
-      className={`step-front camera-step text-center ${cameraState}`}
-    >
-      {cameraState === "camera-active" && (
-        <DocumentCapture
-          visible
-          onResults={handleResults}
-          onLoadFail={handleLoadFail}
-          onNoCameraError={handleNoCameraError}
-          documentType={userSelectedDocumentType}
-        />
-      )}
-      <div className="intro-text">
-        <h3>We need to verify your identity</h3>
-        <h2>Which document do you wish to use?</h2>
-        <h4>
-          Make sure that your document is readable and is not physically damaged
-          or expired.
-        </h4>
-        <div className="doc-type-list">
-          <button
-            id="USDL"
-            onClick={handleDocumentTypeChange}
-            className={`button has-icon-before ${
-              userSelectedDocumentType === "USDL" ? "selected" : ""
-            }`}
-          >
-            <img src={IconDriversLicence} alt="icon driver's license" />
-            Driver&apos;s License
-          </button>
-          <button
-            id="PASSPORT"
-            onClick={handleDocumentTypeChange}
-            className={`button has-icon-before ${
-              userSelectedDocumentType === "PASSPORT" ? "selected" : ""
-            }`}
-          >
-            <img src={IconPassport} alt="icon driver's passport" />
-            Passport
-          </button>
-        </div>
-
-        {!error && (
-          <button
-            onClick={handleOpenCamera}
-            className="button is-pill is-green has-icon-after"
-            disabled={userSelectedDocumentType === ""}
-          >
-            Scan Document
-            <ArrowRight />
-          </button>
-        )}
-      </div>
-      {error && (
-        <div role="alert" className="alert toast is-error u-margin-top-xl">
-          <AlertCircle /> {error}
-          <button
-            className="button is-pill is-red has-icon-after"
-            onClick={handleRetryUpload}
-          >
-            Retry
-          </button>
-        </div>
-      )}
-    </div>
+    <StepCaptureDocumentsView
+      cameraState={cameraState}
+      handleResults={handleResults}
+      handleLoadFail={handleLoadFail}
+      handleNoCameraError={handleNoCameraError}
+      handleRetryUpload={handleRetryUpload}
+      handleDocumentTypeChange={handleDocumentTypeChange}
+      userSelectedDocumentType={userSelectedDocumentType}
+      error={error}
+    />
   );
 };
 export default StepCaptureDocuments;

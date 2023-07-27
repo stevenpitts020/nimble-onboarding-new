@@ -1,8 +1,10 @@
 @import '../../../styles/common'
-
+$text-color: #677489
 .doc_wrapper
-
-  h1, h2, h3
+  min-width: 635px
+  min-height: 578px
+  border-bottom: 0
+  h2, h3
     letter-spacing: -0.666667px
     color: #343536
   h1
@@ -15,8 +17,9 @@
     font-weight: 500
     @include font-size(20px, 32px)
   p, ul
-    @include font-size(14px, 22px)
-    font-weight: 500
+    font-weight: 400
+    line-height: 21px
+    font-size: 14px
     color: $text-color
   ul
     li

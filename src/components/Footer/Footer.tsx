@@ -1,18 +1,39 @@
-import React from "react";
-import "./Footer.sass";
+import React, { useCallback } from "react";
+import FooterView from "./FooterView";
+import { useLayoutContext } from "../../store/LayoutContext";
+import useHotKey from "../../hooks/useHotKey";
 
-import { Link } from "react-router-dom";
+const Footer: React.FC = () => {
+  const {
+    goToNext,
+    goToBack,
+    showNextButton,
+    showBackButton,
+    customNextButtonName,
+    withoutEnter,
+  } = useLayoutContext();
+  const onHotKey = useCallback(
+    (keysPressed, event) => {
+      if (showNextButton && event.key === "Enter" && !withoutEnter) {
+        goToNext();
+      }
+    },
+    [goToNext, showNextButton]
+  );
+  useHotKey(onHotKey);
 
-const Footer: React.FC = () => (
-  <div className="ni-footer">
-    <p>©{new Date().getFullYear()} NimbleFi, All rights reserved.</p>
-    <Link
-      to="/onboarding/privacy-policy"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Privacy Policy
-    </Link>
-  </div>
-);
+  return (
+    <>
+      {(showBackButton || showNextButton) && (
+        <FooterView
+          showBackButton={showBackButton}
+          showNextButton={showNextButton}
+          customNextButtonName={customNextButtonName}
+          goToNext={goToNext}
+          goToBack={goToBack}
+        />
+      )}
+    </>
+  );
+};
 export default Footer;

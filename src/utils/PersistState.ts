@@ -71,10 +71,16 @@ const getPersistState = (storageKey: string): any => {
   }
 };
 
+const formatAmount = (value: number, withCents?: boolean) => {
+  const replacedValue = value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  return `$${withCents ? replacedValue : replacedValue.replace(".00", "")}`;
+};
+
 export {
   getPersistState,
   setPersistState,
   clearPersistState,
   isExpiryTimeFinished,
   getExpiryTime,
+  formatAmount,
 };

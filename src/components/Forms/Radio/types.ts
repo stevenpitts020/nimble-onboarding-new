@@ -13,5 +13,6 @@ export interface IProps extends InputProps {
   defaultValue: string;
   help?: string;
   disabled?: boolean;
+  scrollToRadio?: boolean;
   "data-testid"?: string;
 }

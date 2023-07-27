@@ -5,8 +5,8 @@ import { IPrivacyPolicy } from "./types";
 
 const PrivacyPolicy: React.FC<IPrivacyPolicy> = () => (
   <div>
-    <div className="text-center mb-12">
-      <h1>Privacy Policy</h1>
+    <div className="text-center mb-12 font-inter text-2xl text-darkest ">
+      <h1>Terms & Conditions</h1>
     </div>
 
     <Document>

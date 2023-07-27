@@ -1,0 +1,146 @@
+/** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
+const CardFlip = plugin(({ addUtilities }) => {
+  addUtilities({
+    ".my-rotate-y-180": {
+      transform: "rotateY(180deg)",
+    },
+    ".my-rotate-x-180": {
+      transform: "rotateX(180deg)",
+    },
+    ".my-rotate-y-0": {
+      transform: "rotateY(0deg)",
+    },
+
+    ".preserve-3d": {
+      transformStyle: "preserve-3d",
+    },
+    ".perspective": {
+      perspective: "1000px",
+    },
+    ".backface-hidden": {
+      backfaceVisibility: "hidden",
+    },
+  });
+});
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      maxWidth: {
+        33: "528px",
+        29: "464px",
+        50: "800px",
+      },
+      width: {
+        4.5: "72px",
+      },
+      height: {
+        4.5: "72px",
+      },
+      colors: {
+        dark: "#343536",
+        gray: "#6F7C88",
+        darkest: "#111729",
+        darkestSecond: "#00060C",
+        lightRed: "#DB354F",
+        brightRed: "#EF1616",
+        error: "#D93535",
+        lightGray: "#9F9FA3",
+        grayDarker: "#A5B1BD",
+        lighterGreen: "#5CB97F",
+        lightestGraySecond: "#E3E3E3",
+        green: "#0B9F6E",
+        greenDarker: "#097b40",
+        grayLight: "#E5E6EA",
+        greenLight: "#5CB97F",
+        greenDark: "#097B40",
+        lighterGray: "#EDF0F6",
+        blueCrayola: "#0177FB",
+        darkerBlueSecond: "#4573E1",
+        lightestGray: "#F7F7F7",
+        slateGraySecond: "#6A708A",
+        lightGraySecond: "#D9D9D9",
+        lightGrayThird: "#B2B3B5",
+        slateGray: "#677489",
+        hawkesBlue: "#E9F0FD",
+        manatee: "#8C97AA",
+        xiketic: "#111729",
+        zirkon: "#F8FAFF",
+        zirkonSecond: "#F1F4F8",
+        blueDarkerSecond: "#0B73EB",
+        slateGrayThird: "#6A708A",
+        neutral20: "#F1F4F8",
+        neutral30: "#E3E8EF",
+        neutral50: "#97A3B6",
+        neutral60: "#677489",
+        neutral80: "#47546B",
+        neutral100: "#101E38",
+        "main-accent": "#0B73EB",
+        placeholder: "#677489",
+        darkBlue: "#18214D",
+        LightBlue: "#223C78",
+        lighterBlue: "#4B7DF3",
+        lighterBlueSecond: "#4B7DF2",
+        darkerBlue: "#0177FB",
+        darkGray: "#9F9F9F",
+        darkGraySecond: "#9C9C9C",
+        darkBlueSecond: "#161F42",
+        lightBlue: "#B3D2F0",
+        lightestBlue: "#B4C9FA",
+        lightWhite: "#EFEFEF",
+        darkerGray: "#929292",
+        blueDarker: "#0177FB",
+        blueLighter: "#4B7DF3",
+        blueRibon: "#0276F8",
+        grayInfo: "#A3AAB5",
+        grayChateau: "#A3AAB5",
+        tropicalBlue: "#C4D8F6",
+        apricot: "#E87C7C",
+        linkBlue: "#75B1FA",
+        perano: "#A8C5F2",
+        coolMint: "#DDEAFB",
+      },
+      dropShadow: {
+        card: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      },
+      boxShadow: {
+        card: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        scanResult: "-4px 4px 20px rgba(69, 130, 204, 0.17)",
+        sidebarComponent: "0px 4px 7px rgba(0, 0, 0, 0.25)",
+        cardCenter:
+          "0px 1px 2px rgba(0, 0, 0, 0.02), 0px 10px 20px rgba(0, 0, 0, 0.15)",
+        footer: "10px 4px 14px rgba(0, 0, 0, 0.25)",
+      },
+      // visibility: ["group-hover, group-active"],
+      fontSize: {
+        10: ["10px", "12px"],
+        12: ["12px", "14px"],
+        "24/36": ["24px", "36px"],
+        15: ["15px", "22.5px"],
+        28: ["28px", "42px"],
+        18: ["18px", "33px"],
+        25: ["25px", "37.5px"],
+        36: ["36px", "54px"],
+        "32/48": ["32px", "48px"],
+        "18/23": ["18px", "23px"],
+        "16/19": ["16px", "19px"],
+        "10/12": ["10px", "12px"],
+        "14/120%": ["14px", "120%"],
+        "56/120%": ["56px", "120%"],
+      },
+      translate: {
+        3.25: "52px",
+      },
+    },
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
+      archivo: ["Archivo", "sans-serif"],
+      lora: ["Lora", "serif"],
+      lato: ["Lato", "sans-serif"],
+    },
+  },
+  plugins: [CardFlip],
+};

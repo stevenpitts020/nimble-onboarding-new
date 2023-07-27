@@ -2,13 +2,16 @@ import React from "react";
 import { IPreview } from "./type";
 
 /* Capture Button for camera */
-const CaptureButton = (props: IPreview) => (
-  <button
-    className="capture-button button is-icon is-pill"
-    onClick={props.onClick}
-    data-testid="CaptureButton"
-  >
-    {props.children}
-  </button>
+const CaptureButton: React.FC<IPreview> = ({ onClick, children }) => (
+  <div className="fixed w-screen z-10 bottom-32">
+    <button
+      className="capture-button button rounded-full"
+      onClick={onClick}
+      data-testid="CaptureButton"
+    >
+      {children}
+    </button>
+  </div>
 );
+
 export default CaptureButton;

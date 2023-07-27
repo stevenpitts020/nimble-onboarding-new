@@ -5,9 +5,7 @@ import CaptureButton from "./CaptureButton";
 describe("CaptureButton", () => {
   test("should handle click", () => {
     const mockOnClick = jest.fn();
-    const { getByTestId } = render(
-      <CaptureButton onClick={mockOnClick}>Hello</CaptureButton>
-    );
+    const { getByTestId } = render(<CaptureButton onClick={mockOnClick} />);
     getByTestId("CaptureButton").click();
     expect(mockOnClick).toHaveBeenCalled();
   });

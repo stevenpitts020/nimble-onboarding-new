@@ -17,11 +17,10 @@ const Switch: React.FC<ISwitch> = (props) => {
   } = props;
 
   const [isChecked, setIsChecked] = React.useState(props.isChecked || false);
-  const value = isChecked ? valueOn : valueOff;
 
   useEffect(() => {
-    onChange(value);
-  }, [value, onChange]);
+    onChange(isChecked);
+  }, [isChecked]);
 
   const handleClickTextOff = () => {
     if (disabled) {

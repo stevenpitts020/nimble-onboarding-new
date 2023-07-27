@@ -10,7 +10,8 @@
       "src/serviceWorker.ts",
       "public/mockServiceWorker.js",
       "metadata/**",
-      "build/**"
+      "build/**",
+      "coverage/**"
     ]
   },
   "rules": {

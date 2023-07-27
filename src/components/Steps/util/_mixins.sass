@@ -1,0 +1,25 @@
+@mixin OutbordingCenterBlock($width, $height)
+    position: relative
+    width: $width
+    height: $height
+    box-shadow: 0px 0px 32px rgba(162, 171, 183, 0.04)
+    border-radius: 16px
+  
+@mixin InterText($style, $weight, $size, $line-height)
+    font-family: 'Inter'
+    font-style: $style
+    font-weight: $weight
+    font-size: $size
+    line-height: $line-height
+
+@mixin Scrolable()
+    &::-webkit-scrollbar
+        width: 6px
+
+    &::-webkit-scrollbar-track
+        box-shadow: inset 0 0 5px rgba(163, 170, 181, 0.4)
+        border-radius: 3px
+
+    &::-webkit-scrollbar-thumb
+        background: #a3aab5
+        border-radius: 3px

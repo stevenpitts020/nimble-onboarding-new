@@ -1,0 +1,42 @@
+@import '../util/_mixins'
+
+.ni-step-personal-income
+  max-height: 100vh
+
+.personal-income-description
+  width: 360px
+  max-height: calc(100% - 140px)
+  overflow-x: hidden
+  overflow-y: auto
+
+  .sidebar-description-head,
+  .sidebar-description-text
+    font-size: 14px
+    line-height: 150%
+
+
+.ni-step-personal-income-field
+  @include OutbordingCenterBlock(640px, 380px)
+
+  .ni-step-personal-income-slider
+    position: relative
+
+  .ni-income-select 
+    width: 58px
+    height: 33px
+    position: absolute
+    right: 0
+    top: 5px
+    z-index: 10
+
+    select 
+      border: 1px solid #E3E8EF
+      border-radius: 6px
+      color: #364153
+      font-size: 14px
+      height: 33px
+      font-weight: normal
+
+.personal-income-footer-element
+  font-size: 14px
+  max-width: 50%

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="176" failures="0" errors="0" time="34.006">
+  <testsuite name="Prospect Context/Provider" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:33" time="2.864" tests="10">
+    <testcase classname="Prospect Context/Provider Updating a Prospect Signer Personal Information should update state with new info" name="Prospect Context/Provider Updating a Prospect Signer Personal Information should update state with new info" time="0.08">
+    </testcase>
+    <testcase classname="Prospect Context/Provider Updating a Prospect Signer Personal Information should populate state from identity check API call" name="Prospect Context/Provider Updating a Prospect Signer Personal Information should populate state from identity check API call" time="0.147">
+    </testcase>
+    <testcase classname="Prospect Context/Provider Creating an Account Request Should create an Account Request" name="Prospect Context/Provider Creating an Account Request Should create an Account Request" time="0.02">
+    </testcase>
+    <testcase classname="Prospect Context/Provider Creating an Account Request should send data to server successfully" name="Prospect Context/Provider Creating an Account Request should send data to server successfully" time="0.06">
+    </testcase>
+    <testcase classname="Prospect Context/Provider Creating an Account Request should send data to server successfully with invitees" name="Prospect Context/Provider Creating an Account Request should send data to server successfully with invitees" time="0.061">
+    </testcase>
+    <testcase classname="Prospect Context/Provider Creating an Account Request should render error when sending data to server" name="Prospect Context/Provider Creating an Account Request should render error when sending data to server" time="0.019">
+    </testcase>
+    <testcase classname="Prospect Context/Provider should update accountRequestId and signerId in the state" name="Prospect Context/Provider should update accountRequestId and signerId in the state" time="0.014">
+    </testcase>
+    <testcase classname="Prospect Context/Provider should setInvitees in the state" name="Prospect Context/Provider should setInvitees in the state" time="0.017">
+    </testcase>
+    <testcase classname="Prospect Context/Provider should update product in the state" name="Prospect Context/Provider should update product in the state" time="0.018">
+    </testcase>
+    <testcase classname="Prospect Context/Provider should update initial Deposit in the state" name="Prospect Context/Provider should update initial Deposit in the state" time="0.034">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepOnboardOthers" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:33" time="3.126" tests="8">
+    <testcase classname="StepOnboardOthers renders without error" name="StepOnboardOthers renders without error" time="0.142">
+    </testcase>
+    <testcase classname="StepOnboardOthers should show the current signer from sessionStorage" name="StepOnboardOthers should show the current signer from sessionStorage" time="0.055">
+    </testcase>
+    <testcase classname="StepOnboardOthers should show invitees from API (signed or not)" name="StepOnboardOthers should show invitees from API (signed or not)" time="0.174">
+    </testcase>
+    <testcase classname="StepOnboardOthers should allow onboarding for non signed invitees" name="StepOnboardOthers should allow onboarding for non signed invitees" time="0.121">
+    </testcase>
+    <testcase classname="StepOnboardOthers should skip to sucess if everyone signed" name="StepOnboardOthers should skip to sucess if everyone signed" time="0.044">
+    </testcase>
+    <testcase classname="StepOnboardOthers should skip to sucess if api returned error that everyone signed" name="StepOnboardOthers should skip to sucess if api returned error that everyone signed" time="0.027">
+    </testcase>
+    <testcase classname="StepOnboardOthers should skip to success if only 1 signer" name="StepOnboardOthers should skip to success if only 1 signer" time="0.015">
+    </testcase>
+    <testcase classname="StepOnboardOthers clicking on the Send invite to pending co-applicants should go to success" name="StepOnboardOthers clicking on the Send invite to pending co-applicants should go to success" time="0.032">
+    </testcase>
+  </testsuite>
+  <testsuite name="AmountForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:36" time="2.355" tests="4">
+    <testcase classname="AmountForm after submitting it should not call if form not filled" name="AmountForm after submitting it should not call if form not filled" time="0.217">
+    </testcase>
+    <testcase classname="AmountForm after submitting it call onSubmit" name="AmountForm after submitting it call onSubmit" time="0.337">
+    </testcase>
+    <testcase classname="StepBSAQuestionnaire renders without error" name="StepBSAQuestionnaire renders without error" time="0.112">
+    </testcase>
+    <testcase classname="StepBSAQuestionnaire Submitting BSA Questionnaire after submitting it should go to invite signers step" name="StepBSAQuestionnaire Submitting BSA Questionnaire after submitting it should go to invite signers step" time="0.285">
+    </testcase>
+  </testsuite>
+  <testsuite name="NoCameraMessage" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:36" time="1.947" tests="2">
+    <testcase classname="NoCameraMessage renders without error" name="NoCameraMessage renders without error" time="0.497">
+    </testcase>
+    <testcase classname="NoCameraMessage renders learn react text inside Error Message" name="NoCameraMessage renders learn react text inside Error Message" time="0.395">
+    </testcase>
+  </testsuite>
+  <testsuite name="InvitesForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:38" time="2.277" tests="7">
+    <testcase classname="InvitesForm renders without error" name="InvitesForm renders without error" time="0.116">
+    </testcase>
+    <testcase classname="InvitesForm should submit when data filled" name="InvitesForm should submit when data filled" time="0.211">
+    </testcase>
+    <testcase classname="InvitesForm should add another signer with Add Button" name="InvitesForm should add another signer with Add Button" time="0.098">
+    </testcase>
+    <testcase classname="InvitesForm should remove a signer" name="InvitesForm should remove a signer" time="0.16">
+    </testcase>
+    <testcase classname="InvitesForm should show validation if email not valid" name="InvitesForm should show validation if email not valid" time="0.134">
+    </testcase>
+    <testcase classname="InvitesForm should exclude empty signers" name="InvitesForm should exclude empty signers" time="0.164">
+    </testcase>
+    <testcase classname="InvitesForm should skip with no signers" name="InvitesForm should skip with no signers" time="0.099">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepChooseAmount" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:38" time="2.407" tests="3">
+    <testcase classname="StepChooseAmount renders without error" name="StepChooseAmount renders without error" time="0.229">
+    </testcase>
+    <testcase classname="StepChooseAmount Submitting amount after submitting it should go to BSA questionnaire step" name="StepChooseAmount Submitting amount after submitting it should go to BSA questionnaire step" time="0.35">
+    </testcase>
+    <testcase classname="StepChooseAmount Submitting amount should display validation message" name="StepChooseAmount Submitting amount should display validation message" time="0.238">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:33" time="8.257" tests="4">
+    <testcase classname=" App should display onboarding step 1" name=" App should display onboarding step 1" time="0.111">
+    </testcase>
+    <testcase classname=" landing on a bad page shows 404 page" name=" landing on a bad page shows 404 page" time="0.244">
+    </testcase>
+    <testcase classname=" on step 0 class name of main should be step-intro" name=" on step 0 class name of main should be step-intro" time="0.001">
+    </testcase>
+    <testcase classname=" on Step Personal Info class name of main should be step-personal-info" name=" on Step Personal Info class name of main should be step-personal-info" time="0.124">
+    </testcase>
+  </testsuite>
+  <testsuite name="AuthFormPhone" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:41" time="1.749" tests="4">
+    <testcase classname="AuthFormPhone renders without error" name="AuthFormPhone renders without error" time="0.124">
+    </testcase>
+    <testcase classname="AuthFormPhone after submitting it should not call if form not valid" name="AuthFormPhone after submitting it should not call if form not valid" time="0.28">
+    </testcase>
+    <testcase classname="AuthFormPhone should change phone number with mask" name="AuthFormPhone should change phone number with mask" time="0.058">
+    </testcase>
+    <testcase classname="AuthFormPhone should render phone number with mask" name="AuthFormPhone should render phone number with mask" time="0.061">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepChooseProducts" errors="0" failures="0" skipped="1" timestamp="2022-11-03T15:49:40" time="2.47" tests="5">
+    <testcase classname="StepChooseProducts renders without error" name="StepChooseProducts renders without error" time="0.135">
+    </testcase>
+    <testcase classname="StepChooseProducts Should skip product step for invitees onboarding process" name="StepChooseProducts Should skip product step for invitees onboarding process" time="0.15">
+    </testcase>
+    <testcase classname="AuthFormPhone should change phone number with mask" name="AuthFormPhone should change phone number with mask" time="0.058">
+    </testcase>
+    <testcase classname="StepChooseProducts renders list of products" name="StepChooseProducts renders list of products" time="0.157">
+    </testcase>
+    <testcase classname="StepChooseProducts change tab" name="StepChooseProducts change tab" time="0.137">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;StepFrontDocument /&gt;" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:41" time="2.546" tests="1">
+    <testcase classname="&lt;StepFrontDocument /&gt; renders step title" name="&lt;StepFrontDocument /&gt; renders step title" time="0.384">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConfirmEmail" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:43" time="2.304" tests="4">
+    <testcase classname="ConfirmEmail should render link expired" name="ConfirmEmail should render link expired" time="0.324">
+    </testcase>
+    <testcase classname="ConfirmEmail should render confirm email success" name="ConfirmEmail should render confirm email success" time="0.111">
+    </testcase>
+    <testcase classname="ConfirmEmail should render link is broken" name="ConfirmEmail should render link is broken" time="0.116">
+    </testcase>
+    <testcase classname="ConfirmEmail when clicking on the Resend Email button it should show sent email message" name="ConfirmEmail when clicking on the Resend Email button it should show sent email message" time="0.184">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepVerifyEmail" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:43" time="2.225" tests="1">
+    <testcase classname="StepVerifyEmail should show signer email" name="StepVerifyEmail should show signer email" time="0.329">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepInstructionsInvitees" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:44" time="1.822" tests="3">
+    <testcase classname="StepInstructionsInvitees show Signer name from url" name="StepInstructionsInvitees show Signer name from url" time="0.145">
+    </testcase>
+    <testcase classname="StepInstructionsInvitees show error if broken token" name="StepInstructionsInvitees show error if broken token" time="0.052">
+    </testcase>
+    <testcase classname="StepInstructionsInvitees redirect to already complete if signer has signed" name="StepInstructionsInvitees redirect to already complete if signer has signed" time="0.07">
+    </testcase>
+  </testsuite>
+  <testsuite name="AmountForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:45" time="1.573" tests="2">
+    <testcase classname="AmountForm after submitting it should not call if form not filled" name="AmountForm after submitting it should not call if form not filled" time="0.251">
+    </testcase>
+    <testcase classname="AmountForm after submitting it call onSubmit" name="AmountForm after submitting it call onSubmit" time="0.312">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;NimbleRouter /&gt;" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:45" time="1.506" tests="3">
+    <testcase classname="&lt;NimbleRouter /&gt; renders 404 when no client domain is provided" name="&lt;NimbleRouter /&gt; renders 404 when no client domain is provided" time="0.121">
+    </testcase>
+    <testcase classname="&lt;NimbleRouter /&gt; renders 404 when unable to fetch institution" name="&lt;NimbleRouter /&gt; renders 404 when unable to fetch institution" time="0.084">
+    </testcase>
+    <testcase classname="&lt;NimbleRouter /&gt; renders content within nimble router" name="&lt;NimbleRouter /&gt; renders content within nimble router" time="0.065">
+    </testcase>
+  </testsuite>
+  <testsuite name="Layout" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:46" time="1.282" tests="1">
+    <testcase classname="Layout renders without error" name="Layout renders without error" time="0.196">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepInstructions" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:47" time="1.322" tests="4">
+    <testcase classname="StepInstructions renders without error" name="StepInstructions renders without error" time="0.068">
+    </testcase>
+    <testcase classname="StepInstructions show custom title" name="StepInstructions show custom title" time="0.036">
+    </testcase>
+    <testcase classname="StepInstructions show error msg" name="StepInstructions show error msg" time="0.035">
+    </testcase>
+    <testcase classname="StepInstructions go to terms if you press go" name="StepInstructions go to terms if you press go" time="0.189">
+    </testcase>
+  </testsuite>
+  <testsuite name="TimerDisplay" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:47" time="0.898" tests="1">
+    <testcase classname="TimerDisplay renders without error" name="TimerDisplay renders without error" time="0.055">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductOptionsForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:47" time="1.381" tests="3">
+    <testcase classname="ProductOptionsForm should show all the product options" name="ProductOptionsForm should show all the product options" time="0.275">
+    </testcase>
+    <testcase classname="ProductOptionsForm clicking Back Button should call onBack" name="ProductOptionsForm clicking Back Button should call onBack" time="0.038">
+    </testcase>
+    <testcase classname="ProductOptionsForm after submitting it call onSubmit" name="ProductOptionsForm after submitting it call onSubmit" time="0.05">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:48" time="1.427" tests="1">
+    <testcase classname=" calls Sentry and renders that there was a problem" name=" calls Sentry and renders that there was a problem" time="0.326">
+    </testcase>
+  </testsuite>
+  <testsuite name="Header" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:48" time="1.385" tests="1">
+    <testcase classname="Header renders header" name="Header renders header" time="0.065">
+    </testcase>
+  </testsuite>
+  <testsuite name="AmountForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:49" time="1.724" tests="1">
+    <testcase classname="AmountForm after submitting it call onSubmit" name="AmountForm after submitting it call onSubmit" time="0.262">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;Loading&gt;" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:50" time="1.265" tests="2">
+    <testcase classname="&lt;Loading&gt; renders Loading component when prop active is set" name="&lt;Loading&gt; renders Loading component when prop active is set" time="0.109">
+    </testcase>
+    <testcase classname="&lt;Loading&gt; renders Loading covering full page" name="&lt;Loading&gt; renders Loading covering full page" time="0.024">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepChooseProductOptions" errors="0" failures="0" skipped="1" timestamp="2022-11-03T15:49:50" time="1.342" tests="2">
+    <testcase classname="StepChooseProductOptions renders without error" name="StepChooseProductOptions renders without error" time="0.072">
+    </testcase>
+    <testcase classname="UrlContext currentStep should set currentStep to intro" name="UrlContext currentStep should set currentStep to intro" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="PhotoPreview With Button" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:50" time="1.421" tests="1">
+    <testcase classname="PhotoPreview With Button Button handles click" name="PhotoPreview With Button Button handles click" time="0.082">
+    </testcase>
+  </testsuite>
+  <testsuite name="UrlContext session storage actions" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:51" time="1.283" tests="14">
+    <testcase classname="UrlContext session storage actions should save startUrl to session Storage" name="UrlContext session storage actions should save startUrl to session Storage" time="0.044">
+    </testcase>
+    <testcase classname="UrlContext session storage actions should save name of invited person and token to session Storage" name="UrlContext session storage actions should save name of invited person and token to session Storage" time="0.01">
+    </testcase>
+    <testcase classname="UrlContext session storage actions should save url with prospect id and signer id to session Storage" name="UrlContext session storage actions should save url with prospect id and signer id to session Storage" time="0.008">
+    </testcase>
+    <testcase classname="UrlContext currentStep should set currentStep to back" name="UrlContext currentStep should set currentStep to back" time="0.009">
+    </testcase>
+    <testcase classname="UrlContext currentStep should set currentStep to intro" name="UrlContext currentStep should set currentStep to intro" time="0.008">
+    </testcase>
+    <testcase classname="UrlContext currentStep should set currentStep to intro with / as last symbol of route" name="UrlContext currentStep should set currentStep to intro with / as last symbol of route" time="0.011">
+    </testcase>
+    <testcase classname="UrlContext currentStep should set currentStep to intro for invitee onboarding" name="UrlContext currentStep should set currentStep to intro for invitee onboarding" time="0.013">
+    </testcase>
+    <testcase classname="UrlContext currentStep should sanitize step" name="UrlContext currentStep should sanitize step" time="0.01">
+    </testcase>
+    <testcase classname="UrlContext invitee Token should send token to children" name="UrlContext invitee Token should send token to children" time="0.012">
+    </testcase>
+    <testcase classname="UrlContext invitee Token should sanitize token" name="UrlContext invitee Token should sanitize token" time="0.014">
+    </testcase>
+    <testcase classname="UrlContext invitee Token should be null if no token in url" name="UrlContext invitee Token should be null if no token in url" time="0.007">
+    </testcase>
+    <testcase classname="UrlContext isInvitedByName should send the name of who invited to children" name="UrlContext isInvitedByName should send the name of who invited to children" time="0.01">
+    </testcase>
+    <testcase classname="UrlContext isInvitedByName should sanitize the name" name="UrlContext isInvitedByName should sanitize the name" time="0.015">
+    </testcase>
+    <testcase classname="UrlContext isInvitedByName should be null if no name in url" name="UrlContext isInvitedByName should be null if no name in url" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="AccountRequestDetailProvider" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:51" time="1.445" tests="5">
+    <testcase classname="AccountRequestDetailProvider defaults to empty state" name="AccountRequestDetailProvider defaults to empty state" time="0.045">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider updates state through uploadDocument" name="AccountRequestDetailProvider updates state through uploadDocument" time="0.159">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider updates error" name="AccountRequestDetailProvider updates error" time="0.061">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider should update state with dispatch cancel" name="AccountRequestDetailProvider should update state with dispatch cancel" time="0.015">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider should update state with dispatch resolve" name="AccountRequestDetailProvider should update state with dispatch resolve" time="0.039">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepOnboardingComplete" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:52" time="1.475" tests="1">
+    <testcase classname="StepOnboardingComplete renders without error" name="StepOnboardingComplete renders without error" time="0.097">
+    </testcase>
+  </testsuite>
+  <testsuite name="AuthFormEmail" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:52" time="1.474" tests="1">
+    <testcase classname="AuthFormEmail renders without error" name="AuthFormEmail renders without error" time="0.1">
+    </testcase>
+  </testsuite>
+  <testsuite name="Box" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:53" time="0.943" tests="1">
+    <testcase classname="Box renders learn react text inside Box" name="Box renders learn react text inside Box" time="0.037">
+    </testcase>
+  </testsuite>
+  <testsuite name="UrlStateManager reloads" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:53" time="1.323" tests="2">
+    <testcase classname="UrlStateManager reloads should go back to the start" name="UrlStateManager reloads should go back to the start" time="0.109">
+    </testcase>
+    <testcase classname="UrlStateManager reloads should go back to the start and save params for Invitee onboarding " name="UrlStateManager reloads should go back to the start and save params for Invitee onboarding " time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="ButtonList" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:54" time="0.978" tests="4">
+    <testcase classname="ButtonList should render correctly" name="ButtonList should render correctly" time="0.037">
+    </testcase>
+    <testcase classname="ButtonList should render a request new account button" name="ButtonList should render a request new account button" time="0.02">
+    </testcase>
+    <testcase classname="ButtonList should render institution button" name="ButtonList should render institution button" time="0.011">
+    </testcase>
+    <testcase classname="ButtonList should render support button" name="ButtonList should render support button" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="DocumentCapture" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:54" time="1.173" tests="3">
+    <testcase classname="DocumentCapture should render correctly" name="DocumentCapture should render correctly" time="0.033">
+    </testcase>
+    <testcase classname="DocumentCapture should have video element" name="DocumentCapture should have video element" time="0.009">
+    </testcase>
+    <testcase classname="DocumentCapture should have canvas element" name="DocumentCapture should have canvas element" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="FormatHelper" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:55" time="0.855" tests="38">
+    <testcase classname="FormatHelper isValidDate should return true with valid date" name="FormatHelper isValidDate should return true with valid date" time="0.007">
+    </testcase>
+    <testcase classname="FormatHelper isValidDate should return true with valid date and divider" name="FormatHelper isValidDate should return true with valid date and divider" time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper isValidDate should return true with valid 9 digit date" name="FormatHelper isValidDate should return true with valid 9 digit date" time="0.002">
+    </testcase>
+    <testcase classname="FormatHelper isValidDate should return false with invalid date" name="FormatHelper isValidDate should return false with invalid date" time="0.002">
+    </testcase>
+    <testcase classname="FormatHelper isValidDate should return false with invalid date - cenas" name="FormatHelper isValidDate should return false with invalid date - cenas" time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper isValidDate should return false with invalid date - undefined" name="FormatHelper isValidDate should return false with invalid date - undefined" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepInstructions" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:24" time="0.951" tests="4">
+    <testcase classname="StepInstructions renders without error" name="StepInstructions renders without error" time="0.063">
+    </testcase>
+    <testcase classname="FormatHelper dateFormat should return formatted date" name="FormatHelper dateFormat should return formatted date" time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper dateFormat should return formatted date with divider" name="FormatHelper dateFormat should return formatted date with divider" time="0.001">
+    </testcase>
+    <testcase classname="StepInstructions go to terms if you press go" name="StepInstructions go to terms if you press go" time="0.129">
+    </testcase>
+    <testcase classname="FormatHelper durationFormat should return only minutes" name="FormatHelper durationFormat should return only minutes" time="0.002">
+    </testcase>
+    <testcase classname="FormatHelper fromNow should return formatted date" name="FormatHelper fromNow should return formatted date" time="0.01">
+    </testcase>
+    <testcase classname="FormatHelper fromNow should return from now if &lt; 7 days" name="FormatHelper fromNow should return from now if &lt; 7 days" time="0.008">
+    </testcase>
+    <testcase classname="UrlStateManager reloads should go back to the start and save params for Invitee onboarding " name="UrlStateManager reloads should go back to the start and save params for Invitee onboarding " time="0.029">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;NimbleRouter /&gt;" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:25" time="1.046" tests="3">
+    <testcase classname="&lt;NimbleRouter /&gt; renders 404 when no client domain is provided" name="&lt;NimbleRouter /&gt; renders 404 when no client domain is provided" time="0.112">
+    </testcase>
+    <testcase classname="&lt;NimbleRouter /&gt; renders 404 when unable to fetch institution" name="&lt;NimbleRouter /&gt; renders 404 when unable to fetch institution" time="0.09">
+    </testcase>
+    <testcase classname="&lt;NimbleRouter /&gt; renders content within nimble router" name="&lt;NimbleRouter /&gt; renders content within nimble router" time="0.056">
+    </testcase>
+  </testsuite>
+  <testsuite name="AmountForm" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:25" time="0.87" tests="1">
+    <testcase classname="AmountForm after submitting it call onSubmit" name="AmountForm after submitting it call onSubmit" time="0.174">
+    </testcase>
+    <testcase classname="FormatHelper isEmpty should return false if empty block " name="FormatHelper isEmpty should return false if empty block " time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper isEmpty should return false if using a string" name="FormatHelper isEmpty should return false if using a string" time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper isEmpty should return false if using an array" name="FormatHelper isEmpty should return false if using an array" time="0">
+    </testcase>
+    <testcase classname="FormatHelper isEmpty should return false if 0" name="FormatHelper isEmpty should return false if 0" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:26" time="0.899" tests="1">
+    <testcase classname=" calls Sentry and renders that there was a problem" name=" calls Sentry and renders that there was a problem" time="0.205">
+    </testcase>
+  </testsuite>
+  <testsuite name="Account Request Service" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:27" time="0.574" tests="4">
+    <testcase classname="Account Request Service should create a Account Request" name="Account Request Service should create a Account Request" time="0.027">
+    </testcase>
+    <testcase classname="FormatHelper parseFirstAndMiddleName should return empty if joinedName is not a string" name="FormatHelper parseFirstAndMiddleName should return empty if joinedName is not a string" time="0.002">
+    </testcase>
+    <testcase classname="FormatHelper parseFirstAndMiddleName should return empty string if no middle name none" name="FormatHelper parseFirstAndMiddleName should return empty string if no middle name none" time="0">
+    </testcase>
+    <testcase classname="Account Request Service should upsert the BSA Questionnaire" name="Account Request Service should upsert the BSA Questionnaire" time="0.01">
+    </testcase>
+    <testcase classname="FormatHelper parseFullAddress if no 
+ should return full address" name="FormatHelper parseFullAddress if no 
+ should return full address" time="0.001">
+    </testcase>
+    <testcase classname="FormatHelper parseFullAddress if no comma should return address separated by street, city" name="FormatHelper parseFullAddress if no comma should return address separated by street, city" time="0.003">
+    </testcase>
+    <testcase classname="DocumentCapture should have canvas element" name="DocumentCapture should have canvas element" time="0.008">
+    </testcase>
+    <testcase classname="FormatHelper parseFullAddress if no results should return empty strings" name="FormatHelper parseFullAddress if no results should return empty strings" time="0.002">
+    </testcase>
+    <testcase classname="FormatHelper numberToCurrency should return number for $1,000,000.99" name="FormatHelper numberToCurrency should return number for $1,000,000.99" time="0.001">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render action button" name="AlertDialogButtons should render action button" time="0.006">
+    </testcase>
+    <testcase classname="AlertDialogButtons should click on action button" name="AlertDialogButtons should click on action button" time="0.007">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render action button title" name="AlertDialogButtons should render action button title" time="0.006">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render cancel button title" name="AlertDialogButtons should render cancel button title" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="Loading" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:45:27" time="0.595" tests="3">
+    <testcase classname="Loading defaults to empty state" name="Loading defaults to empty state" time="0.023">
+    </testcase>
+    <testcase classname="Loading should update state with cancel" name="Loading should update state with cancel" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="PhotoPreview" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:55" time="0.924" tests="2">
+    <testcase classname="PhotoPreview renders without error" name="PhotoPreview renders without error" time="0.03">
+    </testcase>
+    <testcase classname="PhotoPreview renders src" name="PhotoPreview renders src" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SideBarMenu /&gt;" errors="0" failures="0" skipped="2" timestamp="2022-11-03T15:49:55" time="1.106" tests="3">
+    <testcase classname="&lt;SideBarMenu /&gt; renders sidebar menu" name="&lt;SideBarMenu /&gt; renders sidebar menu" time="0.092">
+    </testcase>
+    <testcase classname="&lt;SideBarMenu /&gt; sidebar menu first item is active" name="&lt;SideBarMenu /&gt; sidebar menu first item is active" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="&lt;SideBarMenu /&gt; sidebar menu second item is active" name="&lt;SideBarMenu /&gt; sidebar menu second item is active" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+  <testsuite name="AlertMessage" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:56" time="0.877" tests="1">
+    <testcase classname="AlertMessage renders without error" name="AlertMessage renders without error" time="0.029">
+    </testcase>
+  </testsuite>
+  <testsuite name="AlertDialogModal" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:56" time="1.061" tests="6">
+    <testcase classname="AlertDialogModal should render correctly" name="AlertDialogModal should render correctly" time="0.055">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render a button" name="AlertDialogButtons should render a button" time="0.016">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render action button" name="AlertDialogButtons should render action button" time="0.01">
+    </testcase>
+    <testcase classname="AlertDialogButtons should click on action button" name="AlertDialogButtons should click on action button" time="0.013">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render action button title" name="AlertDialogButtons should render action button title" time="0.009">
+    </testcase>
+    <testcase classname="AlertDialogButtons should render cancel button title" name="AlertDialogButtons should render cancel button title" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="CaptureButton" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:56" time="1.091" tests="1">
+    <testcase classname="CaptureButton should handle click" name="CaptureButton should handle click" time="0.046">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:57" time="1.162" tests="1">
+    <testcase classname=" renders Home title" name=" renders Home title" time="0.054">
+    </testcase>
+  </testsuite>
+  <testsuite name="Logo" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:57" time="1.21" tests="1">
+    <testcase classname="Logo renders image" name="Logo renders image" time="0.126">
+    </testcase>
+  </testsuite>
+  <testsuite name="AccountRequestDetailProvider" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:57" time="1.635" tests="3">
+    <testcase classname="AccountRequestDetailProvider defaults to false" name="AccountRequestDetailProvider defaults to false" time="0.064">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider updates state through updateConsent" name="AccountRequestDetailProvider updates state through updateConsent" time="0.028">
+    </testcase>
+    <testcase classname="AccountRequestDetailProvider updates state does not cause side-effects" name="AccountRequestDetailProvider updates state does not cause side-effects" time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="Loading" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:58" time="1.5" tests="3">
+    <testcase classname="Loading defaults to empty state" name="Loading defaults to empty state" time="0.043">
+    </testcase>
+    <testcase classname="Loading should update state with cancel" name="Loading should update state with cancel" time="0.018">
+    </testcase>
+    <testcase classname="Loading should update state with resolve" name="Loading should update state with resolve" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="ErrorMessage" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:58" time="1.412" tests="1">
+    <testcase classname="ErrorMessage renders without error" name="ErrorMessage renders without error" time="0.052">
+    </testcase>
+  </testsuite>
+  <testsuite name="Account Request Service" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:59" time="1.605" tests="4">
+    <testcase classname="Account Request Service should create a Account Request" name="Account Request Service should create a Account Request" time="0.069">
+    </testcase>
+    <testcase classname="Account Request Service should update a Account Request" name="Account Request Service should update a Account Request" time="0.073">
+    </testcase>
+    <testcase classname="Account Request Service should update a Account Request status" name="Account Request Service should update a Account Request status" time="0.09">
+    </testcase>
+    <testcase classname="Account Request Service should upsert the BSA Questionnaire" name="Account Request Service should upsert the BSA Questionnaire" time="0.147">
+    </testcase>
+  </testsuite>
+  <testsuite name="ConfigService" errors="0" failures="0" skipped="0" timestamp="2022-11-03T15:49:59" time="1.248" tests="2">
+    <testcase classname="ConfigService mockAPI should return a boolean" name="ConfigService mockAPI should return a boolean" time="0.003">
+    </testcase>
+    <testcase classname="ConfigService env should be test" name="ConfigService env should be test" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Onboarding" errors="0" failures="0" skipped="1" timestamp="2022-11-03T15:50:00" time="2.545" tests="1">
+    <testcase classname="Onboarding renders onboarding title" name="Onboarding renders onboarding title" time="0">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

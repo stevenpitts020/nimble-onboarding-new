@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import animationData from "../../../animations/camera.json";
-import defaultOptions from "../../../animations/options";
 import { log } from "../../../services";
 import { ProspectContext, InstitutionContext } from "../../../store";
 import {
@@ -13,6 +11,7 @@ import {
 import { LoadingContext } from "../../../store/LoadingContext";
 import { IStepSelfie } from "./types";
 import StepSelfieView from "./StepSelfieView";
+import { useLayout } from "../../../store/LayoutContext";
 
 const StepSelfie: React.FC<IStepSelfie> = () => {
   const history = useHistory();
@@ -28,22 +27,16 @@ const StepSelfie: React.FC<IStepSelfie> = () => {
   const { populateProspectWithFields } = useContext(ProspectContext);
 
   const [photo, setPhoto] = useState("");
-  const [cameraState, setCameraState] = React.useState("closed");
+  const [cameraState, setCameraState] = React.useState("camera-active");
 
   const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
   const [allowFlip, setAllowFlip] = useState(false);
-
-  const animationOptions = {
-    ...defaultOptions,
-    animationData,
-  };
 
   useEffect(() => {
     const goToNextStep = () => {
       log.info("continue to next step", "cameraPhoto");
       dispatch({ type: "cancel" });
-      history.push("/onboarding/personal-info");
-      window.location.reload();
+      history.push("/onboarding/my-personal-income");
     };
 
     if (status === "success") {
@@ -75,6 +68,7 @@ const StepSelfie: React.FC<IStepSelfie> = () => {
     log.info("selfie done", "StepSelfie");
     setPhoto(photoDataUri);
     setCameraState("preview-active");
+    dispatch({ type: "resolve" });
   };
 
   const handleContinueSelfie = async () => {
@@ -92,11 +86,6 @@ const StepSelfie: React.FC<IStepSelfie> = () => {
     setCameraState("camera-active");
   };
 
-  const handleOpenCamera = () => {
-    log.info("open camera", "StepSelfie");
-    setCameraState("camera-active");
-  };
-
   const handleFlipCamera = () => {
     if (facingMode === FACING_MODE_USER) {
       setFacingMode(FACING_MODE_ENVIRONMENT);
@@ -106,20 +95,29 @@ const StepSelfie: React.FC<IStepSelfie> = () => {
     log.info("flipping camera", facingMode);
   };
 
+  const goToBack = useCallback(() => {
+    if (photo) {
+      handleRestartPhoto();
+    } else {
+      history.goBack();
+    }
+  }, [photo, history, handleRestartPhoto]);
+
+  useLayout({
+    showNextButton: !!photo,
+    goToNext: handleContinueSelfie,
+    goToBack,
+  });
+
   return (
     <StepSelfieView
       error={error}
-      animationOptions={animationOptions}
       photo={photo}
       handleTakePhoto={handleTakePhoto}
-      handleRestartPhoto={handleRestartPhoto}
-      handleContinueSelfie={handleContinueSelfie}
       handleFlipCamera={handleFlipCamera}
       allowFlip={allowFlip}
-      handleOpenCamera={handleOpenCamera}
       cameraState={cameraState}
       facingMode={facingMode}
-      status={status}
     />
   );
 };

@@ -1,41 +1,18 @@
 import React from "react";
-import Logo from "../Logo/Logo";
 import TimerDisplay from "../TimerDisplay/TimerDisplay";
+import ExitLogo from "../ExitLogo/ExitLogo";
 import { IHeaderView } from "./types";
-import Button from "../../Common/Button/Button";
-import AlertDialogModal from "../../Common/AlertDialogModal/AlertDialogModal";
 
-const HeaderView = ({
-  props,
-  onGoToStart,
-  institution,
-  stepsWithTimer,
-  currentStep,
-  twoDigits,
-  isOpen,
-  onCancel,
-  onAction,
-}: IHeaderView) => (
+const HeaderView = ({ props, showTimer, hideLogo, twoDigits }: IHeaderView) => (
   <header
     data-testid="header"
-    className={`ni-header ${props.className}`}
+    className={`ni-header mt-4 mr-16 ${props.className}`}
     style={props.style}
   >
-    <Button onClick={onGoToStart} className="ni-logo is-ghost">
-      <Logo
-        url={institution?.logoUri?.default || ""}
-        alt={`${institution?.name} logo`}
-      />
-    </Button>
-    {stepsWithTimer.includes(currentStep) && (
-      <TimerDisplay twoDigits={twoDigits} />
-    )}
-    <AlertDialogModal
-      isOpen={isOpen}
-      onCancel={onCancel}
-      onAction={onAction}
-      title="Are you sure? This will start a new account opening process?"
-    />
+    <div className="flex flex-1 justify-center">
+      {!hideLogo && <ExitLogo className="w-72" />}
+    </div>
+    {showTimer && <TimerDisplay twoDigits={twoDigits} />}
   </header>
 );
 

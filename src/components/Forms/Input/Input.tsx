@@ -16,6 +16,7 @@ const Input = forwardRef((props: IProps, ref: React.Ref<HTMLInputElement>) => {
           type={props.type}
           autoComplete={props.autoComplete}
           autoFocus={props.autoFocus}
+          onKeyDown={props.onKeyDown}
           id={uid}
           onChange={props.onChange}
           placeholder={props.placeholder}

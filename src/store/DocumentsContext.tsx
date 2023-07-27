@@ -139,7 +139,8 @@ const uploadDocument = async (
   dispatch: IDispatch,
   file: string,
   subject: "front" | "back" | "selfie",
-  institutionId: string
+  institutionId: string,
+  callback?: () => void
 ) => {
   dispatch({ type: "create" });
   try {
@@ -153,6 +154,10 @@ const uploadDocument = async (
     const createdDocument = await documentService.create(uploadParams);
 
     dispatch({ type: "resolve", subject, payload: { id: createdDocument.id } });
+
+    if (callback) {
+      callback();
+    }
   } catch (error) {
     Sentry.captureException(error);
     log.error(error, "uploadDocument");

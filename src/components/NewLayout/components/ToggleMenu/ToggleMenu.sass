@@ -1,0 +1,41 @@
+.ni-toggle-menu
+  position: fixed
+  width: 0
+  height: 100vh
+  background-color: #ffffff
+  top: 0
+  overflow: hidden
+  -webkit-transition: width .15s ease-in
+  -moz-transition: width .15s ease-in
+  -o-transition: width .15s ease-in
+  transition: width .15s ease-in
+  z-index: 100
+
+  .ni-toggle-menu-content
+    padding: 44px 32px
+    position: relative
+    height: 100%
+    overflow: hidden
+    max-height: 100%
+
+  &.open-menu
+    width: 405px
+
+  &.left
+    left: 0
+  &.right
+    right: 0
+
+  .ni-toggle-menu-close
+      width: 24px
+      height: 24px
+      position: absolute
+      right: 32px
+      top: 32px
+
+      & > svg 
+        cursor: pointer
+
+
+
+  
