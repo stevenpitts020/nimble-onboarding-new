@@ -5,6 +5,7 @@ import institution from "./Institution";
 import document from "./Document";
 import signer from "./Signer";
 import authService from "./AuthService";
+import dataService from "./DataService";
 
 export {
   /* PLOP_INJECT_EXPORT */
@@ -14,4 +15,5 @@ export {
   institution,
   signer,
   authService,
+  dataService,
 };

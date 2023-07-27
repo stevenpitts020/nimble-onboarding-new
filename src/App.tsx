@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { ReactNode, useContext, useState } from "react";
 import {
   Switch,
   Route,
@@ -12,8 +12,7 @@ import NoMatch from "./components/Static/404/NoMatch";
 import Header from "./components/Header/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Loading from "./components/Common/Loading/Loading";
-import { InstitutionContext, AuthProvider } from "./store";
-import { useLoading } from "./store/LoadingContext";
+import { InstitutionContext, AuthProvider, useLoading } from "./store";
 import { UrlContext } from "./store/UrlContext";
 import { LayoutProvider } from "./store/LayoutContext";
 import LocationHelper from "./utils/LocationHelper";
@@ -30,6 +29,7 @@ import LoanApplication from "./components/LoanApplication/LoanApplication";
 import DepositApplication from "./components/DepositApplication/DepositApplication";
 import Verification from "./components/Verification/Verification";
 import ProductSelection2 from "./components/ProductSelection2/ProductSelection2";
+import landingBgImage from "./assets/landing-bg.png";
 
 const App: React.FC = () => {
   const institution = useContext(InstitutionContext);
@@ -71,7 +71,15 @@ const App: React.FC = () => {
   return (
     <LayoutProvider>
       <AuthProvider>
-        <div className={loading ? "App is-loading" : "App"} data-testid="app">
+        <div
+          className={loading ? "App is-loading" : "App"}
+          data-testid="app"
+          style={{
+            backgroundColor: "#fff",
+            backgroundImage: `url(${landingBgImage})`,
+          }}
+        >
+
           <main
             className={`main step-${currentStep}`}
             style={{
@@ -82,7 +90,6 @@ const App: React.FC = () => {
             data-testid="main"
           >
             <Loading fullPage active={loading} />
-
             <Switch>
               {/* Temporary redirect all to onboarding */}
               <Route exact path="/">

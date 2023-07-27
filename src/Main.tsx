@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { ErrorBoundary } from "@sentry/react";
 import NimbleRouter from "./NimbleRouter";
-import { LoadingProvider } from "./store/LoadingContext";
+import { LoadingProvider } from "./store";
 import App from "./App";
 import ErrorPage from "./components/Static/Error/Error";
 import { UrlProvider } from "./store/UrlContext";

@@ -9,6 +9,10 @@ import { useHistory } from "react-router-dom";
 import { Menu, Switch, Input } from "antd";
 import * as yup from "yup";
 import InputEIN from "../Forms/InputEIN/InputEIN";
+import { authService, dataService } from "../../services";
+import _ from "lodash";
+import isValidDomain from 'is-valid-domain';
+
 
 function getItem(label, key, icon, children?) {
   return {
@@ -18,6 +22,7 @@ function getItem(label, key, icon, children?) {
     children,
   };
 }
+
 const items = [
   getItem("Authentication", "sub1", <img src={checkedGray} />),
   getItem("Qualification", "sub2", <img src={checkedGray} />),
@@ -27,6 +32,7 @@ const BusinessApplicant: React.FunctionComponent = () => {
   const history = useHistory();
   const [checked, setChecked] = useState(true);
   const [isValid, setIsValid] = useState(false);
+  const [me, setMe] = React.useState<any>(); // FIXME: I should just be able to retrieve this from the app context
   const [errorField, setErrorField] = useState({
     domain: false,
     legalBusinessName: false,
@@ -49,12 +55,46 @@ const BusinessApplicant: React.FunctionComponent = () => {
     websiteDomain: "",
     ein: "",
   });
-  const regex =
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+
+  useEffect(() => { // FIXME !!! There should be a auth provider wrapping the app to put this in context on a single app load
+    const token = authService.getAccessToken();
+    Promise.all([
+      authService.getMe(token),
+      authService.getAccountRequest(token),
+    ])
+      .then((values) => {
+        console.log(values);
+        setMe(_.get(values, ['0'], {})); // FIXME: ?? should pull from app context
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }, []);
+
+  useEffect(() => { // FIXME: contextually we should enrich the logged in user in the auth provider
+    const phone = _.get(me, ["phone"]);
+
+    if (phone) dataService.person(phone)
+      .then(person => {
+        const emails = _.get(person, ['emails'], [])
+        if (!_.isEmpty(emails)) {
+          const email = _.get(_.find(emails, e => e.type != "personal"), 'address') as string; // perform positive check on actual type
+          if (email) setValueDomain({
+            ...valueDomain,
+            domain: email.substring(email.indexOf('@') + 1)
+          });
+        }
+      })
+      .catch(console.error)
+  }, [me]);
+
+
+  const domainPattern = /(((https?):\/\/)?(www.)?)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+  
   const schemaDomain = yup
     .object()
     .shape({
-      domain: yup.string().matches(regex, "Enter correct url!").required(),
+      domain: yup.string().matches(domainPattern, "Invalid Domain Name").required(),
       legalBusinessName: yup.string().required(),
       doingBusinessAs: yup.string().required(),
       ein: yup.string().required().length(9),
@@ -67,7 +107,7 @@ const BusinessApplicant: React.FunctionComponent = () => {
       legalBusinessName: yup.string().required(),
       websiteDomain: yup
         .string()
-        .matches(regex, "Enter correct url!")
+        .matches(domainPattern, "Invalid Domain Name")
         .required(),
       entityType: yup.string().required(),
     })
@@ -191,7 +231,7 @@ const BusinessApplicant: React.FunctionComponent = () => {
                       value={valueDomain.domain}
                       className={errorField.domain ? "border-error" : ""}
                       onBlur={() => {
-                        if (!regex.test(valueDomain.domain)) {
+                        if (!domainPattern.test(valueDomain.domain)) {
                           setErrorField({ ...errorField, domain: true });
                         } else setErrorField({ ...errorField, domain: false });
                       }}
@@ -236,8 +276,8 @@ const BusinessApplicant: React.FunctionComponent = () => {
                           ? "border-error"
                           : ""
                         : errorField.legalBusinessNameEIN
-                        ? "border-error"
-                        : ""
+                          ? "border-error"
+                          : ""
                     }
                     onChange={(e) =>
                       onChange("legalBusinessName", e.target.value)
@@ -303,8 +343,8 @@ const BusinessApplicant: React.FunctionComponent = () => {
                           ? "border-error"
                           : ""
                         : errorField.websiteDomain
-                        ? "border-error"
-                        : ""
+                          ? "border-error"
+                          : ""
                     }
                     value={
                       checked
@@ -324,7 +364,7 @@ const BusinessApplicant: React.FunctionComponent = () => {
                             doingBusinessAs: false,
                           });
                       } else {
-                        if (!regex.test(valueEIN.websiteDomain)) {
+                        if (!domainPattern.test(valueEIN.websiteDomain)) {
                           setErrorField({
                             ...errorField,
                             websiteDomain: true,

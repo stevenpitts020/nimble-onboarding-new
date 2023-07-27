@@ -14,6 +14,7 @@ import NumberFormat from "react-number-format";
 import clsx from "clsx";
 import * as yup from "yup";
 import "yup-phone";
+
 const defaultProps = {
   title: "Open your account in as little as 90 seconds",
 };
@@ -78,7 +79,7 @@ const LoginPage: React.FC<IStepInstructions> = (props) => {
     >
       <div className="ni-institution-general">
         <div className="ni-list-general-data">
-          <img className="ni-list-general-data-bg" src={bgImage}></img>
+          <img className="ni-list-general-data-bg" src={bgImage} />
           <img className="ni-institution-logo" alt="Placeholder" src={logo} />
           <h1>60x Faster Onboarding</h1>
         </div>
