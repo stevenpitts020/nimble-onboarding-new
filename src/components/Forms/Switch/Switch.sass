@@ -1,0 +1,30 @@
+@import '../../../styles/common'
+
+.switch-wrap
+  display: flex
+  align-items: center
+  order: 1
+
+  .react-switch-bg
+    background-color: $lighterGray !important // important required to override inline styles
+  &.checked .react-switch-bg
+    background-color: $lightGreen !important // important required to override inline styles
+
+  .form-help
+    font-size: $heading-4-size
+    line-height: 1.8rem
+    font-weight: bold
+    color: $lighterGray
+    white-space: nowrap
+    margin: 0 .5em
+    @media (max-width: 415px) 
+      margin-right: 0
+    cursor: pointer
+  &.checked .form-help
+    color: $lightGreen
+
+  &.disabled
+    cursor: not-allowed
+    opacity: .7
+    .form-help
+      pointer-events: none

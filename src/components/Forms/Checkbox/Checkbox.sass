@@ -1,0 +1,50 @@
+@import '../../../styles/common'
+
+.ni-checkbox
+  display: inline-block
+  vertical-align: middle
+  margin-right: 14px
+  .checkbox
+    width: 24px
+    height: 24px
+    border-radius: 3px
+    transition: all 150ms
+    background: #EBECF1
+    border: 1px solid #C8C8C8
+    border-radius: 4px
+    &.checked
+      background: #5CB97F
+      border: 1px solid #5CB97F
+    svg
+      fill: none
+      stroke: #EBECF1
+      stroke-width: 2px
+  input // Hide checkbox visually but remain accessible to screen readers
+    border: 0
+    clip: rect(0 0 0 0)
+    clippath: inset(50%)
+    height: 1px
+    margin: -1px
+    overflow: hidden
+    padding: 0
+    position: absolute
+    white-space: nowrap
+    width: 1px
+
+
+.checkbox-with-text
+  display: flex
+  align-items: center
+  text-align: left
+
+  +from--tablet
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-between
+
+  p
+    font-weight: 500
+    @include font-size(12px, 17px)
+    color: #8F92A2
+    margin: 0

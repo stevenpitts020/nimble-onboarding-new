@@ -1,0 +1,49 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "plop-templates/**",
+      "src/services/__mocks__/**",
+      "src/*.test.tsx",
+      "src/serviceWorker.ts",
+      "public/mockServiceWorker.js",
+      "metadata/**",
+      "build/**"
+    ]
+  },
+  "rules": {
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
+    "indent": [true, "spaces", 2],
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "quotemark": [true, "single", "jsx-double"],
+    "trailing-comma": false,
+    "prettier": false,
+    "interface-name": false,
+    "no-console": false,
+    "max-line-length": [
+      true,
+      {
+        "limit": 1000,
+        "ignore-pattern": "^import |^export {(.*?)}",
+        "check-strings": true,
+        "check-regex": true
+      }
+    ],
+    "jsx-boolean-value": false,
+    "no-empty": false,
+    "prefer-for-of": false,
+    "ban-types": false,
+    "jsx-no-lambda": false
+
+  }
+}

@@ -1,0 +1,106 @@
+@import '../../../styles/common'
+
+$number-size: 24px
+$title-color: #097B40
+$instruction-color: #5F9BA8
+$instruction-bg-color: #F6F7FC
+
+$step-bg-color: #81BECC
+$step-text-color: $light
+
+.step-intro, .step-initial-consent
+  .mainContainer_wrapper
+    max-width: 1120px
+    width: 100%
+    +from--laptop
+      .mainContainer
+        overflow: hidden
+        padding: 0
+        @include ie-only 
+          overflow: auto
+    +from--tablet
+      min-width: 600px
+
+.ni-step-instructions
+  color: $text-color
+  text-align: center
+  margin: auto
+  height: 100%
+  +from--laptop
+    text-align: left
+  h1
+    font-size: 32px
+    small
+      color: $title-color
+      opacity: 1
+      font-size: 0.75em
+      margin-bottom: 0.25em
+  ol
+    list-style: none
+    counter-reset: custom-couter
+    padding: 0
+    margin: 3em 0
+    text-align: left
+    li
+      color: $instruction-color
+      counter-increment: custom-couter
+      margin-bottom: 1rem
+      line-height: 1.2
+      font-weight: 500
+      display: flex
+      align-items: flex-start
+      &::before
+        content: counter(custom-couter)
+        display: inline-block
+        font-weight: bold
+        background: $step-bg-color
+        color: $step-text-color
+        min-width: $number-size
+        line-height: $number-size
+        font-size: $number-size / 2
+        text-align: center
+        border-radius: 1000px
+        margin-right: $number-size / 2
+  .consent-text
+    margin-bottom: 3em
+    font-size: 12px
+    line-height: 17px
+
+  &-footer
+    margin-top: 1.5em
+    text-align: center
+
+  +from--laptop
+    display: flex
+    width: 100%
+    &-illustration, &-content
+      width: 100%
+      max-width: 50%
+    &-illustration
+      padding: 3rem
+      display: flex
+      flex-flow: column
+      p
+        margin-bottom: 48px
+        flex: 1
+        font-size: 18px
+        line-height: 1.5
+      img
+        width: calc(100% + 6rem)
+        max-width: calc(100% + 6rem)
+        margin-left: -3rem
+        margin-bottom: -5.5rem
+
+    &-content
+      padding: 3rem
+      background-color: $instruction-bg-color
+      border-top-right-radius: 16px
+      border-bottom-right-radius: 16px
+      p
+        font-weight: bold
+        font-size: 16px
+        line-height: 20px
+        +from--desktop
+          margin-top: 64px
+    &-footer
+      text-align: right

@@ -1,0 +1,23 @@
+// Some Defaults while the page is loading
+
+// This is where all the global and brand variables stored
+@import './1-settings/_index'
+
+// This is where all the mixins and functions housed
+@import './2-tools/_mixins'
+
+// Ground Zero styles like Normalize.css, global box-sizing rules, go here
+@import './3-generic/_normalize'
+
+// Unclassed HTML elements (type selectors) go here (like H1, A, etc.).
+@import './4-elements/_index'
+
+// Designed components, chunks of UI, go here
+@import './5-components/_index'
+
+// This is the only place where !important declarations will be accepted.
+// This is the highest specificity layer includes the most explicit types of rules.
+@import './6-utilities/_index'
+
+// This is where we store style from external libraries. For example, Bootstrap.
+@import './7-vendor/_index'

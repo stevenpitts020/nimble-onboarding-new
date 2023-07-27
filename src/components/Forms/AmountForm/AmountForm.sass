@@ -1,0 +1,85 @@
+@import '../../../styles/common'
+
+$focusColor: $themeColor
+
+.ni-step-signers.amount
+  padding: 0
+  display: flex
+  flex-flow: column
+  align-items: center
+  width: 100%
+  h1
+    max-width: 400px
+  p
+    margin: 16px 0 48px
+    color: #8F92A2
+    line-height: 1.8rem
+    max-width: 424px
+    text-align: center
+.input-container
+  display: flex
+  flex-flow: column
+  align-items: center
+  input
+    width: 264px
+    text-align: center
+    font-size: 40px
+    line-height: 56px
+    border: none
+    border-bottom: 1px solid #E3E8EB
+    outline: none
+    font-family: "Gilroy", "Roboto", -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif
+  label.form-label
+    font-size: 14px
+    margin-bottom: 16px
+.prospect-form-card
+  width: 100%
+.back
+  @include reset-button-style()
+  @include font-size(14px, 16px)
+  @include flexAlignCenter
+  font-weight: 500
+  color: #ABAFB3
+  svg
+    margin-right: 4px
+.product-details
+  display: flex
+  justify-content: space-around
+  margin: 48px 0
+  div
+    display: flex
+    flex-flow: column
+    justify-content: center
+    label
+      font-weight: 500
+      font-size: 14px
+      line-height: 16px
+      color: #ABAFB3
+    span
+      margin-top: 6px
+      font-weight: 300
+      font-size: 28px
+      line-height: 22px
+      color: #9093A2
+
+
+.amount-controls
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-direction: row
+  flex-wrap: wrap
+  margin-top: 48px
+  padding: 1rem
+
+  .back
+    margin-left: -4px // align the icon with the + of add signer
+    font-weight: 600
+    padding: 0
+    @include flexAlignCenter
+    @include reset-button-style
+    @include font-size(14px, 16px)
+    justify-content: flex-start
+    color: rgba(0, 0, 0, 0.7)
+    flex: 1
+    text-align: left

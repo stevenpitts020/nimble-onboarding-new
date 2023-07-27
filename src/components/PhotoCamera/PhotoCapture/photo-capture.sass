@@ -1,0 +1,163 @@
+@import '../../../styles/common'
+
+$line-color: white
+
+.ni-photo-capture
+  position: fixed
+  @each $param in top, left, right, bottom
+    #{ $param }: 0
+    text-align: center
+    background: black
+  &-content
+    height: 100%
+  .video-container
+    position: relative
+    overflow: hidden
+    height: 100%
+    video
+      width: 100%
+      min-height: 99%
+      margin: auto
+      transform: scaleX(-1)
+      object-fit: cover
+  .caption
+    position: absolute
+    z-index: 10
+  .capture-button
+    position: fixed
+    width: 62px
+    height: 62px
+    background-color: #ffffff
+    margin: auto
+    bottom: 55px
+    margin-left: -31px
+    z-index: 10
+    
+    &:active
+      transform: scale(0.9)
+    &:before
+      content: ''
+      width: 72px
+      height: 72px
+      border: solid 4px #ffffff
+      border-radius: 50%
+      position: absolute
+    +for--phone-only
+      bottom: 25px
+    +for--phone-landscape-only
+      bottom: 15px
+  .flip-button
+    position: fixed
+    width: 62px
+    height: 62px
+    z-index: 10
+    background-color: transparent
+    right: 10vw
+    bottom: 55px
+    img 
+      width: 48px
+    +for--phone-only
+      bottom: 25px
+    +for--phone-landscape-only
+      bottom: 15px
+  .caption
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    backdrop-filter: blur(10px)
+    background: rgba(120,120,128,0.2)
+    color: white
+    transition: all .3s ease-out
+    margin-top: 16px
+    max-width: 320px
+    padding: 18px
+    border-radius: 8px
+    text-align: center
+    text-shadow: 0px 1px 4px rgba(black,0.3)
+    font-size: 18px
+    font-weight: bold
+    background: rgba(0,0,0,0.7)
+    +for--phone-only
+      width: 280px
+
+@media only screen and (hover: none) and (pointer: coarse)
+  .ni-photo-capture.facing-environment  .video-container video
+    transform: scaleX(1)
+
+// Flip image preview only for selfie
+.step-selfie
+  .photo-preview .ni-photo-preview img
+    transform: scaleX(-1)
+
+    +keyframes("fading")
+      0%
+        opacity: 0
+      20%
+        opacity: 1
+      60%
+        opacity: 1
+      80%
+        opacity: 0
+      100%
+        opacity: 0
+
+// Camera Animations this needs to be refactored
+
+.camera-step
+  max-width: 400px
+  overflow: hidden
+
+  h2
+    margin-bottom: 2rem
+  +for--phone-only
+
+    h3
+      font-size: 1rem
+    .camera-animation
+      width: 256px!important
+      margin: auto
+
+  .intro-text, .preview-container
+    opacity: 0
+    visibility: hidden
+
+  .ni-photo-capture
+    transform: scaleY(0)
+    transform-origin: 50% 100%
+    z-index: 100
+    transition: all .3s ease-out
+    &-content
+      opacity: 0
+      transition: all .3s .75s ease-out
+
+  &.closed
+    .intro-text
+      opacity: 1
+      visibility: visible
+      display: block
+    .preview-container
+      display: none
+
+  &.camera-active
+    .ni-photo-capture, .preview-container
+      opacity: 1
+      visibility: visible
+      display: block
+    .ni-photo-capture
+      transform: scaleY(1)
+      &-content
+        opacity: 1
+
+  &.preview-active
+    max-width: $max-content-width
+    .preview-container
+      opacity: 1
+      visibility: visible
+      display: block
+    .ni-photo-capture
+      opacity: 0
+      transition-delay: .5s
+      &-content
+        transition-delay: 0s
+    .intro-text
+      display: none

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductOptionsForm should show all the product options 1`] = `
+Array [
+  <input
+    data-testid="checkbox-atm_only_card"
+    name="atm_only_card"
+    type="checkbox"
+  />,
+  <input
+    data-testid="checkbox-debit_card"
+    name="debit_card"
+    type="checkbox"
+  />,
+  <input
+    data-testid="checkbox-e_statements"
+    name="e_statements"
+    type="checkbox"
+  />,
+  <input
+    data-testid="checkbox-mobile_and_online_banking"
+    name="mobile_and_online_banking"
+    type="checkbox"
+  />,
+]
+`;

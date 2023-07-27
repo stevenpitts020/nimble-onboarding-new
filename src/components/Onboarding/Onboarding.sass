@@ -1,0 +1,45 @@
+@import '../../styles/common'
+$bg-cards-space: 2rem
+.mainContainer_wrapper
+  max-width: $max-content-width
+  margin: auto
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+
+.mainContainer
+  background: #FFFFFF
+  box-shadow: 0 2px 40px 0 rgba(0,0,0,0.10)
+  border-radius: 16px
+  padding: 2rem 5vw
+  z-index: 3
+  +from--tablet()
+    +flexbox()
+  +from--laptop
+    padding: 3rem
+
+.App:not(.is-loading)
+  main:not(.step-intro)
+    .mainContainer_wrapper
+      position: relative
+      padding-bottom: $bg-cards-space
+
+
+  // > *
+  //   opacity: 0
+  //   animation: fadeIn 0.5s .5s forwards
+
+
+.assistantSection
+  display: none
+  +from--tablet
+    display: block
+  flex: 1
+
++keyframes("fadeIn")
+  from
+    opacity: 0
+  to
+    opacity: 1

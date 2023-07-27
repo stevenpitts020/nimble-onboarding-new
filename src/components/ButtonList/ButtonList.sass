@@ -1,0 +1,28 @@
+@import '../../styles/common'
+$button-color: #047A40
+.button-list
+  display: flex 
+  flex-flow: column
+  a, button
+    display: flex
+    align-items: center
+    width: 100%
+    border: 0
+    border-top: solid 1px $superLightGray
+    color: $button-color
+    background-color: white
+    font-weight: bold
+    padding: 24px 0
+    text-decoration: none
+    label 
+      text-align: left
+      flex-grow: 1
+      font-size: 18px
+    img
+      width: 64px
+      height: 64px
+      margin-right: 18px
+    svg
+      color: $superLightGray
+  &.completed
+    flex-flow: column-reverse

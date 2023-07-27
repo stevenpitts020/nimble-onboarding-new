@@ -1,0 +1,113 @@
+@import '../../../styles/common'
+$title-color: #097B40
+*
+  box-sizing: border-box
+
+$number-size: 24px
+.App main.step-terms-and-conditions
+  +from--tablet
+    padding: 5vh 3vw
+  .mainContainer_wrapper
+    max-width: 1440px
+    .mainContainer
+      padding: 0
+
+      .terms-content
+        position: relative
+        .info
+          overflow: hidden
+          h1
+            margin-bottom: 2rem
+            font-size: 32px
+            text-align: center
+            +from--desktop
+              text-align: left
+            small
+              font-size: .75em
+              color: #097B40
+              line-height: 1.2
+              margin-bottom: .25em
+              opacity: 1
+          p
+            color: $gray
+            line-height: 1.5
+            margin-bottom: 1.5em
+        .info
+          padding: 6%
+          +from--desktop
+            padding: 4%
+
+        .content
+          background-color: #F6F7FC
+        +from--desktop
+          display: flex
+          max-height: 62vh
+          .info
+            flex: 1
+          .content
+            width: 60%
+            overflow: scroll
+            border-top-right-radius: 16px
+            border-top-left-radius: 16px
+            border: 8px solid #fff
+            border-bottom: 0
+            .doc_wrapper
+              padding: 6%
+              +from--desktop
+                padding: 4%
+      .terms-footer
+        position: sticky
+        bottom: 0
+        left: 0
+        right: 0
+        background: $title-color
+        box-shadow: 0px 10px 40px rgba(black, 0.15)
+        min-height: 96px
+        padding: 1rem
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        justify-content: space-between
+        border-bottom-right-radius: 16px
+        border-bottom-left-radius: 16px
+        +from--tablet
+          padding: 1rem 2rem
+        +from--desktop
+          position: relative
+          z-index: 2
+        .checkbox-with-text, .button.is-pill.is-green
+          margin: .5rem
+        .button
+          background: #fff
+          color: $title-color
+          border-radius: 16px 0 16px 0
+          font-size: 16px
+          transition: all 400ms cubic-bezier(.47,1.64,.41,.8)
+
+          +from--laptop
+            padding-left: 5rem
+            padding-right: 5rem
+
+        .checkbox-with-text
+          align-items: center
+          .ni-checkbox
+            .checkbox
+              border: 0
+              background: #fff
+              color: transparent
+              svg
+                stroke: currentColor
+              &.checked
+                color: $title-color
+
+          p
+            font-size: 1rem
+            color: #fff
+
+        [disabled].button
+          transform: scale(0)
+          display: none
+        +for--phone-only
+          justify-content: space-around
+          [disabled].button
+            display: none

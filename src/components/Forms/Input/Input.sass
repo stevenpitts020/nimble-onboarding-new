@@ -1,0 +1,40 @@
+@import '../../../styles/common'
+
+$focusColor: $themeColor
+$borderColor: rgba(#818181, .2)
+
+.form
+  &-group
+    margin-bottom: 1.5rem
+    display: flex
+    flex-direction: column
+
+    .field-error
+      order: 2
+      margin-top: 8px
+
+  &-fields
+    display: flex
+    flex-direction: column
+    position: relative
+    > .form-label
+      margin-bottom: 8px
+
+  &-label
+    order: 1
+
+  &-input
+    border: 0
+    border-bottom: 1px solid $borderColor
+    // width: 100%
+    font-size: $heading-4-size
+    line-height: 2rem
+    font-weight: bold
+    order: 2
+    outline: 0
+    padding: 0 8px
+    &:focus
+      + .form-label
+        color: $focusColor
+        &:after
+          width: 100%

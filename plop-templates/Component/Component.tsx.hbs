@@ -1,0 +1,27 @@
+import React from 'react'
+import './{{pascalCase name}}.sass'
+
+interface I{{pascalCase name}} {
+  className?: string
+  style?: React.CSSProperties,
+  title?: string
+}
+
+const defaultProps = {
+  title: 'Example',
+}
+
+/**
+ * {{pascalCase name}}
+ *
+ * @param props I{{pascalCase name}}
+ */
+export const {{pascalCase name}}: React.FC<I{{pascalCase name}}> = (props: I{{pascalCase name}}) => {
+  return (
+    <div data-testid="{{pascalCase name}}" className={`ni-{{dashCase name}} ${props.className}`} style={props.style}>
+      {props.title}
+    </div>
+  )
+}
+
+{{pascalCase name}}.defaultProps = defaultProps

@@ -1,0 +1,9 @@
+customHeaders:
+  - pattern: '**/*.wasm'
+    headers:
+      - key: 'Content-Type'
+        value: 'application/wasm'
+  - pattern: '**/microblink/**/*.data'
+    headers:
+      - key: 'Content-Type'
+        value: 'text/plain; charset=utf-8'

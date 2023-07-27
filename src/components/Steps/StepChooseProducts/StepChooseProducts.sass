@@ -1,0 +1,185 @@
+@import '../../../styles/common'
+
+// those are not in the colors
+$font-active-color: #F19920
+$font-light-gray: #9093A2
+$font-medium-gray: #6A6A6A
+$border-color: #EEEEEE
+
+.step-choose-products
+  .mainContainer
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 0
+.mainContainer
+  .ni-step-choose-products
+    padding-bottom: 2rem
+    margin: 0
+    h2
+      font-weight: bold
+      @include font-size(20px, 24px)
+      text-align: center
+      color: $lightGray
+
+
+    >h1
+      font-weight: bold
+      @include font-size(24px, 29px)
+      text-align: center
+      color: $dark
+      padding: 2vw
+    .product-tabs, .tab
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: center
+      padding: 20px 0
+    .product-tabs
+      background: linear-gradient(180deg, rgba(246, 247, 252, 0) 0%, #F6F7FC 100%)
+      .tab
+        flex-direction: column
+        width: 50%
+        cursor: pointer
+        &.inactive
+          filter: grayscale(1)
+          opacity: 0.5
+        &.active
+          span
+            color: $font-active-color
+        span
+          @include font-size(14px, 20px)
+          font-weight: 600
+          color: $lightGray
+        img
+          max-width: 40px
+          height: auto
+          margin-bottom: .5rem
+          +from--tablet
+            max-width: 64px
+        img.loanIcon
+          height: 59px
+        img.cardIcon
+          height: 59px
+
+    .products-list
+      display: flex
+      flex-direction: column
+      .product
+        display: flex
+        flex-direction: row
+        padding: 30px 5vw 24px 5vw
+        border-top: 1px solid $border-color
+
+        @include for--phone-only
+          padding: 20px
+          flex-direction: column
+
+        .description
+          flex-grow: 1
+          h3
+            font-weight: 600
+            @include font-size(18px, 20px)
+            color: $dark
+          p
+            font-weight: 500
+            @include font-size(13px, 17px)
+            color: $text-color
+          button
+            @include reset-button-style()
+            font-weight: bold
+            @include font-size(11px, 13px)
+            text-transform: uppercase
+            color: $lightGreen
+            white-space: nowrap
+            padding: 0
+
+        .product-side
+          display: flex
+          flex-direction: column
+          text-align: right
+          margin-left: 115px
+          +from--tablet
+            justify-content: center
+            margin-left: 4rem
+          .interest-rate
+            margin-bottom: 43px
+            text-align: right
+            p
+              font-size: 28px
+              font-weight: 300
+              line-height: 22px
+              margin: 0
+              color: $font-light-gray
+            span
+               @include font-size(11px, 13px)
+               color: $font-medium-gray
+
+        // HACK REquested by mark. to remove later
+        .enroll .button
+          font-weight: bold
+          transition: transform 400ms cubic-bezier(.47,1.64,.41,.8)
+        &:nth-child(1)
+          .enroll .button
+            transform: scale(1.3)
+            background: #F19920
+            &:hover
+              transform: scale(1.4)
+        &:nth-child(2), &:nth-child(3)
+          .enroll .button
+            background: transparent
+            border: 2px solid #F19920
+            color: #F19920
+            &:hover
+              transform: scale(1.1)
+
+        .no-product
+          display: flex
+          flex-grow: 1
+          align-items: center
+          justify-content: center
+      .product-detail
+        .back
+          @include reset-button-style()
+          @include font-size(14px, 16px)
+          @include flexAlignCenter
+          font-weight: 500
+          color: #ABAFB3
+          svg
+            margin-right: 4px
+
+        .product-detail-nav
+          @include flexbox
+          @include flex-flow(row)
+          @include justify-content(space-between)
+          border-bottom: 1px solid $border-color
+          padding: 0 5vw 20px
+          margin-top: 2rem
+          button.button
+            padding: 8px 24px
+
+        .product-detail-content
+          padding: 50px 5vw 0
+          h1
+            text-align: left
+            font-weight: bold
+            @include font-size(32px, 32px)
+            letter-spacing: -0.666667px
+            color: $dark
+          .content
+            margin-top: 24px
+            @include font-size(14px, 20px)
+            color: $text-color
+            ul, h5
+              margin-top: 20px
+            h5
+              font-weight: bold
+            p
+              font-weight: 500
+              color: rgba(143, 146, 161, 0.72)
+            hr
+              border: none
+              border-bottom: 1px solid $border-color
+
+        .enroll-bottom
+          margin: 50px auto 0
+          @include flexbox

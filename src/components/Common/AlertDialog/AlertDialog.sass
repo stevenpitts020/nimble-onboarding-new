@@ -1,0 +1,45 @@
+@import '../../../styles/common'
+
+.dialog-overlay
+  background-color: rgba(0, 0, 0, .3)
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  filter: blur(8px)
+  -webkit-filter: blur(8px)
+
+.dialog-content
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 360
+  background: #FFFFFF
+  box-shadow: 0 2px 40px 0 rgba(0, 0, 0, 0.1)
+  border-radius: 16px
+  border: 2px solid white
+
+  &.tone-warning
+    background-color: #FFF9E5
+
+  &.align-center
+    text-align: center
+
+  &.size-small
+    padding: 48px
+    width: 100%
+    @media (min-width: 368px)
+      max-width: 540px
+
+.dialog-title
+  margin: 0
+  font-weight: bold
+  @include font-size(24px, 29px)
+  color: #343536
+
+.dialog-text
+  margin: 0
+  @include font-size(16px, 21px)
+  color: #343536

@@ -1,0 +1,36 @@
+@import '../../../styles/common'
+
+.ni-step-signers
+  padding: 1rem
+  text-align: center
+  max-width: 640px
+
+  > h1
+    font-weight: bold
+    @include font-size(24px, 29px)
+    text-align: center
+    color: #343536
+
+  .hint
+    text-align: center
+    margin: 15px auto 0
+    width: 75%
+
+    @media (max-width:768px)
+      width: 100%
+
+  .ni-alert-message
+    text-align: left
+    margin: -5vw -5vw 35px -5vw
+    margin-bottom: 35px
+
+  // hack to hide role selection
+  // related with https://gitlab.com/wearesingular/clients/nimble/nimble-onboarding/-/issues/37
+  .switch
+    display: none
+
+  +from--tablet
+    padding: 3rem
+
+    .ni-alert-message
+      margin: -5rem -5rem 35px -5rem

@@ -1,0 +1,110 @@
+@import '../../../styles/common'
+
+$focusColor: $themeColor
+$addButtonColor: #ABAFB3 // this is not in the colors
+
+.ni-signers-form
+  text-align: left
+  margin-top: 35px
+
+  form > [role=alert]
+    text-align: center
+
+  section
+    .grid
+      position: relative
+      display: grid
+      grid-template-columns: repeat(5, 1fr)
+      grid-gap: 0 1.5rem
+      margin-left: 29px // align the remove icon with the + of add signer
+      @media (max-width: 415px)
+        margin-left: 10px
+      .form-input
+        padding: 0
+
+    // Linter complains but this is actually correct
+    @for $i from 1 through 5
+      .span-#{$i}
+        grid-column: span #{$i}
+
+
+  // remove button, so far is a isolated case
+  .is-remove
+    position: absolute
+    right: 100%
+    top: 50%
+    transform: translate(0, -50%)
+    padding: 0
+    line-height: 1.8rem
+    display: flex
+    align-self: flex-start
+
+    svg
+      color: $lightestGray
+      width: 20px
+      height: 20px
+      transition: color .2s ease-in-out
+
+      &:hover,
+      &:focus
+        color: $focusColor
+
+  .is-add
+    padding: 30px 0
+    line-height: 1.8rem
+    color: $addButtonColor
+    font-weight: 500
+    @media (max-width: 415px)
+      margin-left: -18px
+    +from--tablet()
+      padding: 0
+
+    &:hover,
+    &:focus
+      color: lighten($addButtonColor, 20%)
+      svg
+        color: lighten($addButtonColor, 20%)
+
+    svg
+      color: $addButtonColor
+      width: 22px
+      height: 22px
+      transition: color .2s ease-in-out
+
+  .controls
+    margin-top: 3rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-direction: row
+    flex-wrap: wrap
+    @media (max-width: 415px)
+      justify-content: center
+      button:last-child
+        order: 0
+        width: 100%
+        margin-bottom: 30px
+      .back
+        order: 1
+      .skip
+        order: 2
+    > *
+      margin-right: 30px
+      @media (max-width: 415px)
+        margin-right: 0
+
+    > *:last-child
+      margin-right: 0
+
+    .back
+      margin-left: -4px // align the icon with the + of add signer
+      font-weight: 600
+      padding: 0
+      @include flexAlignCenter
+      @include reset-button-style
+      @include font-size(14px, 16px)
+      justify-content: flex-start
+      color: rgba(0, 0, 0, 0.7)
+      text-align: left
+      svg
+        margin-right: 17px

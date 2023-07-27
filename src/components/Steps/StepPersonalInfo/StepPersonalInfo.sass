@@ -1,0 +1,70 @@
+@import '../../../styles/common'
+
+.step-personal-info
+  .mainContainer_wrapper
+    width: 100%
+.ni-step-personal-info
+  max-width: 100%
+  h1
+    font-size: 24px
+    margin-bottom: 1rem
+    small
+      font-size: .75em
+    +from--tablet
+      font-size: 32px
+  > .alert.toast
+    margin: 1rem 0
+  .ni-prospect-form
+    aside
+      width: 60px
+      height: 60px
+      background: $bluishGray
+      border-radius: 6px
+      display: none
+      +from--laptop
+        +flexAlignCenter
+
+    +from--tablet
+      padding: 48px
+      padding-left: 24px
+      padding-bottom: 0
+      $grid-size: 12
+      section
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 2rem
+        margin-bottom: 2rem
+        .grid
+          display: grid
+          grid-template-columns: repeat($grid-size, 1fr)
+          grid-gap: 0 1.5rem
+
+        // Linter complains but this is actually correct
+        @for $i from 1 through $grid-size
+          .span-#{$i}
+            grid-column: span #{$i}
+      +from--laptop
+        section
+          grid-template-columns: 60px 1fr
+
+    .terms-and-continue
+      text-align: center
+      .checkbox_area
+        display: flex
+        align-items: center
+        text-align: left
+      .button
+        flex-wrap: nowrap
+        margin-top: 1rem
+
+
+      p
+        font-weight: 500
+        @include font-size(12px, 17px)
+        color: #8F92A2
+        button
+          background: transparent
+          border: none
+          flex-wrap: nowrap
+          text-decoration: underline
+          padding: 0

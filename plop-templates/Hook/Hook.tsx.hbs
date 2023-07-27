@@ -1,0 +1,15 @@
+import { useState} from 'react'
+
+// Use it like this
+// import
+// const { {{camelCase var}}, set{{pascalCase var}} } = use{{pascalCase name}}Handler()
+
+/**
+ * {{pascalCase name}} Hook
+ */
+const use{{pascalCase name}}Handler = (initialState?: boolean | false) => {
+  const [{{camelCase var}}, set{{pascalCase var}}] = useState(initialState)
+
+  return { {{camelCase var}}, set{{pascalCase var}} }
+}
+export default use{{pascalCase name}}Handler

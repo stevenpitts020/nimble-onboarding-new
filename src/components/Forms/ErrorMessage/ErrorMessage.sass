@@ -1,0 +1,14 @@
+@import '../../../styles/common'
+
+.ni-error-message
+  padding: 0
+
+.field-error
+  font-size: $font-size-sm
+  color: $error-color
+  + .form-fields
+    .form-input:focus + .form-label
+      color: $error-color
+    .form-label
+      &:after
+        background: $error-color

@@ -1,0 +1,71 @@
+@import '../../../styles/common'
+
+$radioCheckedColor: $themeColor
+$radioBorderColor: rgba(0, 0, 0, 0.1)
+$radioBorderRadius: 30px
+$radioSize: 18px
+$radioCheckedSize: 14px
+$radioRippleSize: 4px
+
+$inactiveLabelColor: $lightestGray
+$activeLabelColor: $radioCheckedColor
+
+@keyframes ripple
+  0%
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0)
+  50%
+    box-shadow: 0px 0px 0px $radioRippleSize rgba(0, 0, 0, 0.1)
+  100%
+    box-shadow: 0px 0px 0px $radioRippleSize rgba(0, 0, 0, 0)
+
+.form-input-radio
+  display: none
+
+  &:checked + .form-help:before
+    animation: ripple 0.2s linear forwards
+
+  &:checked + .form-help:after
+    transform: scale(1)
+
+  &:checked + .form-help
+    color: $activeLabelColor
+
+  + .form-help
+    order: 2
+    display: inline-block
+    height: 35px
+    position: relative
+    padding: 0 ($radioSize + 16px)
+    margin-bottom: 0
+    cursor: pointer
+    vertical-align: middle
+    font-size: $heading-4-size
+    line-height: 1.8rem
+    font-weight: bold
+    color: $inactiveLabelColor
+    &.disabled
+      color: $inactiveLabelColor
+
+    &:before, &:after
+      position: absolute
+      content: ''
+      border-radius: $radioBorderRadius
+      transition: all .3s ease
+      transition-property: transform, border-color
+
+    // outer ring
+    &:before
+      left: 0
+      top: 3px
+      width: $radioSize
+      height: $radioSize
+      border: 2px solid $radioBorderColor
+
+    // inside ring
+    &:after
+      top: $radioSize - $radioCheckedSize + 3
+      left: $radioSize - $radioCheckedSize
+      width: $radioCheckedSize
+      height: $radioCheckedSize
+      transform: scale(0)
+      background: $radioCheckedColor

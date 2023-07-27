@@ -1,0 +1,105 @@
+@import '../../../styles/common'
+
+$focusColor: $themeColor
+
+.ni-step-bsa
+  padding: 0
+  display: flex
+  flex-flow: column
+  align-items: center
+  width: 100%
+  h1 
+    font-weight: bold
+    font-size: 24px
+    font-size: 1.5rem
+    line-height: 1.12
+    line-height: 1.20833
+    text-align: center
+    color: #343536
+  h3 
+    font-size: 1.25rem
+    color: #9F9FA3
+  p
+    color: #8F92A2
+    line-height: 1.8rem
+    max-width: 424px
+    text-align: center
+.prospect-form-card
+  width: 100%
+  section
+    margin-top: 65px
+    h3 
+      margin-bottom: 2rem
+    .question-row
+      display: flex
+      margin-bottom: 2rem
+      flex-wrap: wrap
+      p
+        text-align: left
+        width: 100%
+        margin: 0
+        margin-bottom: 10px
+        +from--tablet
+          width: 80%
+         
+      .flag-select__btn
+        color: rgba(129, 129, 129, 0.4)
+      .flag-select__options 
+        border-radius: 8px
+        border: 0
+        box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.15)
+      .flag-select .filterBox input
+        width: calc(100% - 32px)
+        margin: 0
+        border: 0
+        border-bottom: solid 1px #D5D7D9
+        padding: 10px 16px
+      .form-group
+        margin: 0
+      label
+        line-height: 1.8rem
+      .form-fields
+        flex-direction: row
+.back
+  @include reset-button-style()
+  @include font-size(14px, 16px)
+  @include flexAlignCenter
+  font-weight: 500
+  color: #ABAFB3
+  svg 
+    margin-right: 4px
+
+.bsa-controls
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-direction: row
+  flex-wrap: wrap
+  margin-top: 48px
+  button.back 
+    max-width: 100px
+  @media (max-width: 415px) 
+    .skip
+    
+  > *
+    margin-right: 30px
+    @media (max-width: 415px) 
+      margin-right: 0
+
+  > *:last-child
+    margin-right: 0
+
+  .back
+    margin-left: -4px
+    font-weight: 600
+    padding: 0
+    @include flexAlignCenter
+    @include reset-button-style
+    @include font-size(14px, 16px)
+    justify-content: flex-start
+    color: rgba(0, 0, 0, 0.7)
+    flex: 1
+    text-align: left
+    svg
+      margin-right: 17px
+

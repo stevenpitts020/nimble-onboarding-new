@@ -1,0 +1,42 @@
+@import '../../../styles/common'
+$number-size: 24px
+
+.ni-no-camera-message
+  padding: 0
+  text-align: left
+
+  h2
+    text-align: center
+    margin-bottom: .5rem
+  h3
+    text-align: center
+    font-size: 1.2rem
+  .steps
+    list-style: none
+    counter-reset: custom-couter
+    padding: 0
+    margin: 1em 0
+    text-align: left
+    li
+      counter-increment: custom-couter
+      margin-bottom: 1rem
+      line-height: 1.2
+      display: flex
+      align-items: center
+      &::before
+        content: counter(custom-couter)
+        display: inline-block
+        font-weight: bold
+        background: $superLightGray
+        min-width: $number-size
+        line-height: $number-size
+        font-size: $number-size / 2
+        text-align: center
+        border-radius: 1000px
+        margin-right: $number-size / 2
+  .qrcode
+    text-align: center
+    margin: 2rem auto
+
+  & + .intro-text
+    display: none!important

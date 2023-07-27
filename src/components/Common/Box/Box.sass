@@ -1,0 +1,34 @@
+@import '../../../styles/common'
+
+// Grid used with Box component
+.ni-row-flexbox
+  @include flexbox()
+
+.ni-row-flex-center
+  @include flexAlignCenter()
+
+.ni-col-flex
+  flex: 1
+
+.ni-row-main-sidebar
+  display: grid
+  grid-gap: 32px
+  grid-template-columns: 1fr
+  margin-bottom: 32px
+  div.ant-card
+    margin-bottom: spacer(8)
+
+  &.slim
+    @include from--laptop
+      grid-template-columns: 80% 20%
+    @include from--desktop
+      grid-template-columns: 82% 18%
+    @include from--desktop-huge
+      grid-template-columns: 1fr 14%
+
+  @include from--laptop
+    grid-template-columns: 1fr 34%
+  @include from--desktop
+    grid-template-columns: 1fr 36%
+  @include from--desktop-huge
+    grid-template-columns: 1fr 28%

@@ -1,0 +1,40 @@
+@import '../../../styles/common'
+
+.photo-preview
+  z-index: 1
+  .ni-photo-preview
+    padding: 0
+    margin: auto
+    > .photo
+      width: 100%
+      border-radius: 1rem
+  .action-buttons
+    margin-top: 2rem
+    text-align: center
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    .button
+      margin: .5rem
+      white-space: nowrap
+
+@supports (object-fit: cover)
+  .ni-photo-preview
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 10
+    > .photo
+      height: 100%
+      object-fit: cover
+  .action-buttons
+    position: fixed
+    z-index: 11
+    bottom: 1rem
+    left: 0
+    right: 0
+    +from--tablet
+      bottom: 5vh

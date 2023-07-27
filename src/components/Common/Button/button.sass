@@ -1,0 +1,117 @@
+@import '../../../styles/common'
+
+$buttonRippleSize: 12px
+$button-help-color: #81BECC
+@keyframes pulse
+  0%
+  transform: scale(0.85)
+    color: 0 0 0 0 rgba(0, 0, 0, 0.7)
+
+  70%
+    transform: scale(1)
+    color: 0 0 0 10px rgba(0, 0, 0, 0)
+
+  100%
+    transform: scale(0.85)
+    color: 0 0 0 0 rgba(0, 0, 0, 0)
+
+@keyframes ripple
+  0%
+    background: 0px 0px 0px 1px rgba(0, 0, 0, 0.0)
+  50%
+    background: 0px 0px 0px $buttonRippleSize rgba(0, 0, 0, 0.1)
+  100%
+    background: 0px 0px 0px $buttonRippleSize rgba(0, 0, 0, 0)
+
+.button
+  +reset-button-style()
+  font-size: $font-size-base
+  line-height: 1rem
+  padding: 0.75rem 1.5rem
+  font-weight: 600
+  background-color: $superLightGray
+  background-position: center
+  color: rgba($black, 0.7)
+  +flexAlignCenter()
+  display: inline-flex
+  transition: background .2s ease-in-out
+
+  &:hover,
+  &:focus
+    background: lighten($superLightGray, 5%)
+
+  &:active
+    animation: ripple 0.2s linear forwards
+
+  svg
+    margin-left: -.25rem
+    margin-right: .75rem
+    // margin-left: -.5rem
+    // margin-right: 1rem
+    // width: 1
+    &.loading
+      margin-left: 0
+      margin-right: 0
+    &.loading
+      animation: pulse 1.5s infinite
+
+  &.is-pill
+    border-radius: 500em
+  &.is-green
+    background: $success-color
+    color: $white
+    &:hover,
+    &:focus
+      background: lighten($success-color, 20%)
+  &.is-blue
+    background: $button-help-color
+    color: $white
+    &:hover
+      background: lighten($button-help-color, 20%)
+  &.is-red 
+    background: $error-color
+    color: $white 
+    &:hover 
+      background: lighten($error-color, 20%)
+  &.is-primary
+    background: $primary-color
+    color: $white
+    &:hover,
+    &:focus
+      background: lighten($primary-color, 20%)
+
+  &.is-ghost
+    background: transparent
+
+  &.is-gray
+    background: #E3E8EB
+    color: rgba(0, 0, 0, 0.7)
+  &.has-icon-before
+    background: none
+    border: 1px solid #E3E8EB
+    border-radius: 8px
+    margin: 5px 0
+    font-weight: bold
+    font-size: 16px
+    justify-content: flex-start
+    img 
+      margin-right: 25px
+    &.selected 
+      background: #DBF0E3
+      border-color: #5CB97F
+  &.has-icon-after
+    svg
+      margin-right: -.5rem
+      margin-left: 1rem
+
+  &.is-icon
+    padding: 1.5rem 1.5rem
+    &.small
+      padding: 1rem
+    svg
+      margin: 0
+
+  &.is-centered
+    margin-left: auto
+    margin-right: auto
+    display: flex

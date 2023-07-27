@@ -1,0 +1,26 @@
+import React from 'react'
+import { render } from '@testing-library/react'
+import { {{pascalCase name}} } from './{{pascalCase name}}'
+
+// reuse this in several tests
+const renderWithProps = (props: any) => {
+  const defaultProps = {
+    className: 'ni-test',
+  }
+  return render(<{{pascalCase name}} {...defaultProps} {...props} />)
+}
+
+describe('{{pascalCase name}}', () => {
+  test('renders without error', () => {
+    const { getByTestId } = renderWithProps({
+      className: 'ni-test',
+    })
+    const container = getByTestId('{{pascalCase name}}')
+
+    expect(container).toBeInTheDocument()
+    expect(container).toHaveClass('ni-test')
+
+    // we can add a snapshot if we wish
+    // expect(container).toMatchSnapshot()
+  })
+})

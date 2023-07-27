@@ -1,0 +1,30 @@
+.document-capture
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: black
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  transition: all .3s .75s ease-out
+  canvas
+    position: absolute
+    top: 0
+    left: 0
+  video
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  .video-overlay
+    position: absolute
+    opacity: 0
+    background: rgba(0,0,0,0.5)
+    backdrop-filter: blur(16px)
+    transition-delay: 300ms
+    width: 100%
+    height: 100%
+    &.active
+      opacity: 1

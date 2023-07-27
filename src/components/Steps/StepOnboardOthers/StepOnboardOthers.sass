@@ -1,0 +1,66 @@
+@import '../../../styles/common'
+$button-color: #F19920
+.step-success
+  .mainContainer_wrapper
+    max-width: 500px
+.ni-step-onboard-others
+  padding: 1rem
+  text-align: center
+  p
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    margin-top: 24px
+    font-size: 16px
+    line-height: 22px
+    color: #74778B
+  ul
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 0
+    width: 100%
+    li
+      display: flex
+      list-style: none
+      justify-content: space-between
+      flex-wrap: wrap
+      align-items: center
+      border-bottom: solid 1px $superLightGray
+      order: 1
+      p
+        font-size: 18px
+        font-weight: 700
+      span
+        padding: 0 1.5rem
+        color: #A5B1BD
+        font-size: 14px
+        font-weight: 600
+      button
+        background: transparent
+        border: 2px solid #F19920
+        color: #F19920
+      &.signed
+        order: 2
+        p
+          color: #A5B1BD
+      &.not-signed
+        padding: 12px 0
+        @include for--phone-only
+          justify-content: flex-end
+          max-width: 98%
+        p
+          max-width: 316px
+          text-overflow: ellipsis
+          overflow: hidden
+          flex-grow: 1
+          text-align: left
+          margin: 0
+        button
+          margin: 8px 0
+
+
+
+
+
+

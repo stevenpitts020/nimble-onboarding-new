@@ -1,0 +1,275 @@
+// Utilities for adding exceptions to styles. Use sparingly
+
+
+// -------- Layout -----------
+.w100
+  width: 100%
+
+.img-fluid
+  max-width: 100%
+  height: auto
+
+.flex-spaced-horizontal
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  flex-wrap: wrap
+
+.flex-center-vertical
+  display: flex
+  flex-direction: column
+  align-items: center
+
+// align
+
+.u-vertical-align-top
+  align-items: flex-start
+
+.u-vertical-align-center
+  align-items: center
+
+.u-vertical-align-bottom
+  align-items: flex-end
+
+.u-horizontal-align-left
+  align-items: flex-start
+
+.u-horizontal-align-center
+  align-items: center
+
+.u-horizontal-align-right
+  align-items: flex-end
+
+.u-justify-center
+  justify-content: center
+
+.u-justify-space-around
+  justify-content: space-around
+
+.u-justify-space-between
+  justify-content: space-between
+
+
+$sizes: 1, 2, 3, 4, 6, 8, 10, 12
+//  '1': '0.25rem', // 4px
+//  '2': '0.5rem',  // 8px
+//  '3': '0.75rem', // 12px
+//  '4': '1rem',    // 16px
+//  '6': '1.5rem',  // 24px
+//  '8': '2rem',    // 32px
+//  '12': '3rem',   // 48px
+@each $size in $sizes
+  .ml-#{$size}
+    margin-left: spacer($size)
+  .mr-#{$size}
+    margin-right: spacer($size)
+  .mt-#{$size}
+    margin-top: spacer($size)
+  .mb-#{$size}
+    margin-bottom: spacer($size)
+  .m-#{$size}
+    margin: spacer($size)
+  .pl-#{$size}
+    padding-left: spacer($size)
+  .pr-#{$size}
+    padding-right: spacer($size)
+  .pt-#{$size}
+    padding-top: spacer($size)
+  .pb-#{$size}
+    padding-bottom: spacer($size)
+  .p-#{$size}
+    padding: spacer($size)
+
+  .space-y-#{$size}
+    > *
+      margin-bottom: spacer($size)
+
+    > *:last-child
+      margin-bottom: 0
+
+  .space-x-#{$size}
+    > *
+      margin-right: spacer($size)
+
+    > *:last-child
+      margin-right: 0
+
+
+.ml-0
+  margin-left: 0
+.mr-0
+  margin-right: 0
+.mt-0
+  margin-top: 0
+.mb-0
+  margin-bottom: 0
+.pl-0
+  padding-left: 0
+.pr-0
+  padding-right: 0
+.pt-0
+  padding-top: 0
+.pb-0
+  padding-bottom: 0
+
+.ml-auto
+  margin-left: auto
+.mr-auto
+  margin-right: auto
+.mt-auto
+  margin-top: auto
+.mb-auto
+  margin-bottom: auto
+.pl-auto
+  padding-left: auto
+.pr-auto
+  padding-right: auto
+.pt-auto
+  padding-top: auto
+.pb-auto
+  padding-bottom: auto
+
+
+.u-margin-left-auto
+  margin-left: auto
+
+.u-margin-right-auto
+  margin-right: auto
+
+.u-margin-none
+  margin: 0 !important
+
+.u-margin-top-none
+  margin-top: 0
+
+.u-margin-bottom-none
+  margin-bottom: 0
+
+.u-margin-left-none
+  margin-left: 0
+
+.u-margin-right-none
+  margin-right: 0
+
+.u-margin-top-xl
+  margin-top: $padding-xl
+
+.u-margin-top-lg
+  margin-top: $padding-lg
+
+.u-margin-top-md
+  margin-top: $padding-md
+
+.u-margin-top-sm
+  margin-top: $padding-sm
+
+.u-margin-top-xs
+  margin-top: $padding-xs
+
+.u-margin-top-xs
+  margin-top: $padding-xs
+
+.u-margin-right-xl
+  margin-right: $padding-xl
+
+.u-margin-right-lg
+  margin-right: $padding-lg
+
+.u-margin-right-md
+  margin-right: $padding-md
+
+.u-margin-right-sm
+  margin-right: $padding-sm
+
+.u-margin-right-xs
+  margin-right: $padding-xs
+
+.u-margin-left-lg
+  margin-left: $padding-lg
+
+.u-margin-left-xl
+  margin-left: $padding-xl
+
+.u-margin-left-lg
+  margin-left: $padding-lg
+
+.u-margin-left-md
+  margin-left: $padding-md
+
+.u-margin-left-sm
+  margin-left: $padding-sm
+
+.u-margin-left-xs
+  margin-left: $padding-xs
+
+.u-margin-bottom-xl
+  margin-bottom: $padding-xl
+
+.u-margin-bottom-lg
+  margin-bottom: $padding-lg
+
+.u-margin-bottom-md
+  margin-bottom: $padding-md
+
+.u-margin-bottom-sm
+  margin-bottom: $padding-sm
+
+.u-margin-bottom-xs
+  margin-bottom: $padding-sm
+
+.u-align-right
+  text-align: right
+
+.u-align-center
+  text-align: center
+
+.u-align-left
+  text-align: left
+
+.u-overflow-x
+  @include for--phone-only
+    overflow-x: scroll
+
+// Animation based utilities
+
+.u-fade-appear
+  opacity: 0
+  animation-duration: .5s
+  animation-fill-mode: both
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2)
+  animation-play-state: paused
+  animation-delay: .8s
+  height: 0
+
+.u-fade-appear-active
+  animation-name: fadeIn
+  animation-play-state: running
+
+.u-fade-leave
+  animation-duration: .5s
+  animation-fill-mode: both
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2)
+  animation-play-state: paused
+
+.u-fade-leave-active
+  animation-name: fadeOut
+  animation-play-state: running
+
+@keyframes fadeOut
+  0%
+    opacity: 1
+  99%
+    opacity: 0
+  100%
+    opacity: 0
+    height: 0
+
+@keyframes fadeIn
+  0%
+    opacity: 0
+  99%
+    opacity: 1
+  100%
+    opacity: 1
+    height: auto
